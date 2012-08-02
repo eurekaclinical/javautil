@@ -36,7 +36,7 @@ import java.util.ServiceConfigurationError;
  * 
  * @author Andrew Post
  */
-public class ServiceLoader {
+public class ClassServiceLoader {
 
     /**
      * Loads the classes of the providers of a service.
