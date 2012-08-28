@@ -27,9 +27,9 @@ import java.util.Set;
 
 /**
  * Utilities for arrays.
- * 
+ *
  * @author Andrew Post
- * 
+ *
  */
 public final class Arrays {
 
@@ -43,10 +43,8 @@ public final class Arrays {
      * Copies a 2D array. Nothing happens if either argument is
      * <code>null</code>.
      *
-     * @param src
-     *            an array.
-     * @param dest
-     *            an array.
+     * @param src an array.
+     * @param dest an array.
      */
     public static void matrixCopy(Object[][] src, Object[][] dest) {
         if (src != null && dest != null) {
@@ -57,14 +55,11 @@ public final class Arrays {
     }
 
     /**
-     * Fills a 2D array with a value. Nothing happens if <code>matrix</code>
-     * is <code>null</code>. Likewise, nothing happens to a <code>null</code>
-     * row.
+     * Fills a 2D array with a value. Nothing happens if <code>matrix</code> is
+     * <code>null</code>. Likewise, nothing happens to a <code>null</code> row.
      *
-     * @param matrix
-     *            a 2D <code>Object[]</code> array.
-     * @param val
-     *            an <code>Object</code> value.
+     * @param matrix a 2D <code>Object[]</code> array.
+     * @param val an <code>Object</code> value.
      */
     public static void matrixFill(Object[][] matrix, Object val) {
         if (matrix != null) {
@@ -81,13 +76,11 @@ public final class Arrays {
     /**
      * Returns where an object is in a given array.
      *
-     * @param arr
-     *            the <code>Object[]</code> to search.
-     * @param obj
-     *            the <code>Object</code> to search for.
+     * @param arr the <code>Object[]</code> to search.
+     * @param obj the <code>Object</code> to search for.
      * @return <code>true</code> of <code>obj</code> is in <code>arr</code>,
-     *         <code>false</code> otherwise. Returns <code>false</code> if
-     *         <code>arr</code> is <code>null</code>.
+     * <code>false</code> otherwise. Returns <code>false</code> if
+     * <code>arr</code> is <code>null</code>.
      */
     public static boolean contains(Object[] arr, Object obj) {
         if (arr != null) {
@@ -102,18 +95,19 @@ public final class Arrays {
     }
 
     /**
-     * Returns a Set (specfically, a HashSet) with all the unique elements
-     * from the given array of objects.
+     * Returns a Set (specfically, a HashSet) with all the unique elements from
+     * the given array of objects.
+     *
      * @param objs An array of objects.
      * @return A Set object containing all the unique elements from the array.
      */
     public static <E> Set<E> asSet(E[] objs) {
         Set<E> objSet = null;
         if (objs != null) {
-            objSet = new HashSet<E>();
-            for (E obj : objs) {
-                objSet.add(obj);
-            }
+        objSet = new HashSet<E>();
+        for (E obj : objs) {
+            objSet.add(obj);
+        }
         }
         return objSet;
     }

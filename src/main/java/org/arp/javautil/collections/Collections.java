@@ -21,6 +21,7 @@ package org.arp.javautil.collections;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -82,5 +83,33 @@ public class Collections {
             }
         }
         return false;
+    }
+    
+    public static <K> Set<K> intersection(Collection<Set<K>> sets) {
+        boolean firstPass = true;
+        Set<K> result = new HashSet<K>();
+        for (Set<K> set : sets) {
+            if (firstPass) {
+                result.addAll(set);
+                firstPass = false;
+            } else {
+                result.retainAll(set);
+            }
+        }
+        return result;
+    }
+    
+    public static <K> Set<K> intersection(Set<K>... sets) {
+        boolean firstPass = true;
+        Set<K> result = new HashSet<K>();
+        for (Set<K> set : sets) {
+            if (firstPass) {
+                result.addAll(set);
+                firstPass = false;
+            } else {
+                result.retainAll(set);
+            }
+        }
+        return result;
     }
 }
