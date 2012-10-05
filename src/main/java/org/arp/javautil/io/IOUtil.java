@@ -45,15 +45,14 @@ public final class IOUtil {
     }
 
     /**
-     * Reads everything from the given
-     * <code>Reader</code> into a
+     * Reads everything from the given <code>Reader</code> into a
      * <code>String</code>. No buffering is implemented over what is already
      * provided by the given
      * <code>Reader</code>.
      *
      * @param reader a <code>Reader</code>.
      * @return a <code>String</code>.
-     * @throws IOException
+     * @throws IOException if an error occurs reading from the reader.
      */
     public static String readAllAsString(Reader reader) throws IOException {
         StringBuilder buf = new StringBuilder();
@@ -64,6 +63,14 @@ public final class IOUtil {
         return buf.toString();
     }
 
+    /**
+     * Reads everything from the given {@link BufferedReader} as a list of 
+     * lines. 
+     *
+     * @param reader a {@link BufferedReader}.
+     * @return a {@link List<String>} of lines.
+     * @throws IOException if an error occurs reading from the reader.
+     */
     public static List<String> readAllAsLines(BufferedReader reader)
             throws IOException {
         final List<String> lines = new ArrayList<String>();
