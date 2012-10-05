@@ -29,7 +29,7 @@ import java.io.*;
  */
 public abstract class WithBufferedReader {
 
-    private InputStreamReader inputStreamReader;
+    private Reader inputStreamReader;
 
     public WithBufferedReader(InputStream inputStream) {
         this(new InputStreamReader(inputStream));
@@ -44,12 +44,12 @@ public abstract class WithBufferedReader {
 
     }
 
-    public WithBufferedReader(InputStreamReader inputStreamReader) {
+    public WithBufferedReader(Reader inputStreamReader) {
         this.inputStreamReader = inputStreamReader;
 
     }
 
-    public abstract void read(BufferedReader reader);
+    public abstract void read(BufferedReader reader) throws IOException;
 
     public void execute() throws IOException {
         BufferedReader r = new BufferedReader(this.inputStreamReader);
