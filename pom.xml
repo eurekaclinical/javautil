@@ -12,7 +12,7 @@
     <distributionManagement>
         <repository>
             <id>aiw.internal.repo</id>
-            <name>AIW Interal Repo</name>
+            <name>AIW Internal Repo</name>
             <url>http://maven.cci.emory.edu:8081/nexus/content/repositories/aiw/</url>
         </repository>
         <snapshotRepository>
