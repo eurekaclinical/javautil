@@ -295,7 +295,8 @@
                 <version>2.3</version>
                 <configuration>
                     <descriptors>
-                        <descriptor>assembly.xml</descriptor>
+                        <descriptor>assembly/src.xml</descriptor>
+                        <descriptor>assembly/bin.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
