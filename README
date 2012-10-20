@@ -1,0 +1,45 @@
+JavaUtil 2.0.3 -- A Utility Library for Developing Java Software
+Center for Comprehensive Informatics, Emory University
+
+OVERVIEW
+
+Welcome to JavaUtil. We developed this over multiple years during our internal
+development efforts, and it has reached a point of stability where we have
+decided to make it available to the outside world. The JavaUtil package aims to
+fill in the gaps of the Apache Commons and similar utility libraries out there.
+Features include convenience classes for  string, collections, arrays, dates,
+iterators, colors, logging, unit testing, a little bit of basic statistics, 
+database queries, caching and more.
+
+WHAT'S NEW
+
+Version 2.0.3 is the first externally suitable version complete with NOTICE,
+LICENSE and README files.
+
+REQUIREMENTS
+
+The current version is known to work with Oracle Java 6. It is expected to work
+with OpenJDK 6 as well. It is incompatible with Java 7.
+
+INSTALLATION
+
+The easiest way to get JavaUtil is using Maven. It is available at the
+http://maven.cci.emory.edu:8081 repository. Use the following dependency
+declaration:
+
+<dependency>
+  <groupId>org.arp</groupId>
+  <artifactId>javautil</artifactId>
+  <version>2.0.2</version>
+</dependency>
+
+It is also available in tarball and zip file formats from 
+http://eureka-dev.cci.emory.edu/dev/. 
+
+LICENSING
+
+JavaUtil is freely available as open source under the Apache License, Version 
+2.0. A copy of the license is in the LICENSE file provided in this 
+distribution.
+
+JavaUtil is Copyright (C) 2012 Emory University.
