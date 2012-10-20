@@ -23,7 +23,7 @@ with OpenJDK 6 as well. It is incompatible with Java 7.
 
 INSTALLATION
 
-The easiest way to get JavaUtil is using Maven. It is available at the
+The easiest way to get JavaUtil is using Maven. It is available from the
 http://maven.cci.emory.edu:8081 repository. Use the following dependency
 declaration:
 
@@ -34,7 +34,11 @@ declaration:
 </dependency>
 
 It is also available in tarball and zip file formats from 
-http://eureka-dev.cci.emory.edu/dev/. 
+http://eureka-dev.cci.emory.edu/dev/. Put javautil-2.0.2.jar on your classpath.
+
+CONTACTING US
+
+Please send an email to aiwhelp@emory.edu for support or questions.
 
 LICENSING
 
@@ -43,3 +47,8 @@ JavaUtil is freely available as open source under the Apache License, Version
 distribution.
 
 JavaUtil is Copyright (C) 2012 Emory University.
+
+FOR MORE INFORMATION
+
+Please see http://eureka-dev.cci.emory.edu/dev for technical documentation and
+more information.
