@@ -1,4 +1,4 @@
-JavaUtil 2.0.3 -- A Utility Library for Developing Java Software
+JavaUtil 2.0.4 -- A Utility Library for Developing Java Software
 Center for Comprehensive Informatics, Emory University
 
 OVERVIEW
@@ -13,8 +13,7 @@ database queries, caching and more.
 
 WHAT'S NEW
 
-Version 2.0.3 is the first externally suitable version complete with NOTICE,
-LICENSE and README files.
+Version 2.0.4 includes a binary release and fixes a bug in the README.
 
 REQUIREMENTS
 
@@ -30,11 +29,11 @@ declaration:
 <dependency>
   <groupId>org.arp</groupId>
   <artifactId>javautil</artifactId>
-  <version>2.0.2</version>
+  <version>2.0.4</version>
 </dependency>
 
 It is also available in tarball and zip file formats from 
-http://eureka-dev.cci.emory.edu/dev/. Put javautil-2.0.2.jar on your classpath.
+http://eureka-dev.cci.emory.edu/dev/. Put javautil-2.0.4.jar on your classpath.
 
 CONTACTING US
 
