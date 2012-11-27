@@ -353,5 +353,10 @@
             <name>Oracle Repository</name>
             <url>http://download.oracle.com/maven</url>
         </repository>
+        <repository>
+            <id>maven.cci</id>
+            <name>CCI Maven Repository</name>
+            <url>http://maven.cci.emory.edu/nexus/content/repositories/public</url>
+        </repository>
     </repositories>
 </project>
