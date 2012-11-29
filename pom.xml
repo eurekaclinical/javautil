@@ -349,14 +349,14 @@
     </profiles>
     <repositories>
         <repository>
-            <id>oracle-repo</id>
-            <name>Oracle Repository</name>
-            <url>http://download.oracle.com/maven</url>
-        </repository>
-        <repository>
             <id>maven.cci</id>
             <name>CCI Maven Repository</name>
-            <url>http://maven.cci.emory.edu/nexus/content/repositories/public</url>
+            <url>http://maven.cci.emory.edu:8081/nexus/content/repositories/public</url>
+        </repository>
+        <repository>
+            <id>aiw.internal.repo</id>
+            <name>AIW Internal Repository</name>
+            <url>http://maven.cci.emory.edu:8081/nexus/content/repositories/aiw</url>
         </repository>
     </repositories>
 </project>
