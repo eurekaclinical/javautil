@@ -9,7 +9,7 @@
     <url>http://aiw.sourceforge.net</url>
     
     <scm>
-        <connection>scm:svn:https://scm.cci.emory.edu/svn/aiw/trunk/javautil</connection>
+        <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/trunk/javautil</developerConnection>
         <url>https://scm.cci.emory.edu/svn/aiw/trunk/javautil</url>
     </scm>
     
