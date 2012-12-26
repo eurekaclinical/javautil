@@ -7,6 +7,22 @@
     <version>2.0.6-SNAPSHOT</version>
     <name>JavaUtil</name>
     <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
+    <description>JavaUtil is a utility library to speed the development of 
+        Java software. We developed it over multiple years during 
+        our internal development efforts, and it has reached a 
+        point of stability where we have decided to make it 
+        available to the outside world. The JavaUtil package aims 
+        to fill in the gaps of the Apache Commons and similar 
+        utility libraries out there.  Features include convenience
+        classes for string, collections, arrays, dates, iterators, 
+        colors, logging, unit testing, a little bit of basic 
+        statistics, database queries, caching and more.
+    </description>
+    
+    <organization>
+        <name>Emory University</name>
+        <url>http://www.emory.edu</url>
+    </organization>
     
     <scm>
         <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/trunk/javautil</developerConnection>
