@@ -1,4 +1,4 @@
-JavaUtil 2.0.5 -- A Utility Library for Developing Java Software
+JavaUtil 2.0.6 -- A Utility Library for Developing Java Software
 Center for Comprehensive Informatics, Emory University
 
 OVERVIEW
@@ -14,7 +14,8 @@ queries, caching and more.
 
 WHAT'S NEW
 
-Version 2.0.5 includes a binary release and fixes a bug in the README.
+Version 2.0.6 is a bug fix release. There are no new features. We moved the
+package to our new public Maven repository (see below).
 
 REQUIREMENTS
 
@@ -25,17 +26,17 @@ expected to work with OpenJDK 6 as well. It is incompatible with Java
 INSTALLATION
 
 The easiest way to get JavaUtil is using Maven. It is available from
-the http://maven.cci.emory.edu:8081 repository. Use the following
-dependency declaration:
+the http://maven.cci.emory.edu/nexus/content/repositories/aiw/ repository. 
+Use the following dependency declaration:
 
 <dependency>
     <groupId>org.arp</groupId>
     <artifactId>javautil</artifactId> 
-    <version>2.0.5</version>
+    <version>2.0.6</version>
 </dependency>
 
 It is also available in tarball and zip file formats from
-http://aiw.sourceforge.net/dev/javautil-2.0.5. Put javautil-2.0.5.jar
+http://aiw.sourceforge.net/dev/javautil-2.0.6. Put javautil-2.0.6.jar
 on your classpath.
 
 CONTACTING US
@@ -48,9 +49,9 @@ JavaUtil is freely available as open source under the Apache License,
 Version 2.0. A copy of the license is in the LICENSE file provided in
 this distribution.
 
-JavaUtil is Copyright (C) 2012 Emory University.
+JavaUtil is Copyright (C) 2012-2013 Emory University.
 
 FOR MORE INFORMATION
 
-Please see http://aiw.sourceforge.net/dev/javautil-2.0.5 for technical
+Please see http://aiw.sourceforge.net/dev/javautil-2.0.6 for technical
 documentation and more information.
