@@ -20,12 +20,10 @@
 package org.arp.javautil.io;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.io.IOUtils;
 
 /**
  * Convenience routines for reading files, resources, readers, and input
@@ -42,79 +40,6 @@ public final class IOUtil {
     }
 
     private IOUtil() {
-    }
-
-    /**
-     * Reads everything from the given <code>Reader</code> into a
-     * <code>String</code>. No buffering is implemented over what is already
-     * provided by the given
-     * <code>Reader</code>.
-     *
-     * @param reader a <code>Reader</code>.
-     * @return a <code>String</code>.
-     * @throws IOException if an error occurs reading from the reader.
-     */
-    public static String readAllAsString(Reader reader) throws IOException {
-        StringBuilder buf = new StringBuilder();
-        int ch;
-        while ((ch = reader.read()) > -1) {
-            buf.append((char) ch);
-        }
-        return buf.toString();
-    }
-
-    /**
-     * Reads everything from the given {@link BufferedReader} as a list of 
-     * lines. 
-     *
-     * @param reader a {@link BufferedReader}.
-     * @return a {@link List<String>} of lines.
-     * @throws IOException if an error occurs reading from the reader.
-     */
-    public static List<String> readAllAsLines(BufferedReader reader)
-            throws IOException {
-        final List<String> lines = new ArrayList<String>();
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
-        }
-
-        return lines;
-    }
-
-    /**
-     * Reads everything from the given text file into a
-     * <code>String</code>.
-     *
-     * @param fileName a file name <code>String</code>
-     * @return a <code>String</code>.
-     * @throws IOException
-     */
-    public static String readFileAsString(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        try {
-            return readAllAsString(reader);
-        } finally {
-            reader.close();
-        }
-    }
-
-    /**
-     * Reads everything from the given text file into a
-     * <code>String</code>.
-     *
-     * @param file a {@link File}.
-     * @return a {@link String}.
-     * @throws IOException
-     */
-    public static String readFileAsString(File file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        try {
-            return readAllAsString(reader);
-        } finally {
-            reader.close();
-        }
     }
 
     /**
@@ -138,13 +63,8 @@ public final class IOUtil {
         if (resourceName == null) {
             return null;
         }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                classObj.getResourceAsStream(resourceName)));
-        try {
-            return readAllAsString(reader);
-        } finally {
-            reader.close();
-        }
+        InputStream in = classObj.getResourceAsStream(resourceName);
+        return IOUtils.toString(in);
     }
 
     /**
@@ -163,20 +83,7 @@ public final class IOUtil {
     public static List<String> readResourceAsLines(
             Class<?> classObj, String resourceName) throws IOException {
         InputStream in = getResourceAsStream(resourceName, classObj);
-        BufferedReader r = new BufferedReader(new InputStreamReader(in));
-        List<String> result;
-        try {
-            result = readAllAsLines(r);
-            r.close();
-            r = null;
-        } finally {
-            if (r != null) {
-                try {
-                    r.close();
-                } catch (IOException ignored) {}
-            }
-        }
-        return result;
+        return IOUtils.readLines(in);
     }
 
     /**
@@ -339,7 +246,7 @@ public final class IOUtil {
         outFile.deleteOnExit();
         return outFile;
     }
-
+    
     /**
      * Gets the logger for this package.
      *
