@@ -1,0 +1,420 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.arp</groupId>
+    <artifactId>javautil</artifactId>
+    <packaging>jar</packaging>
+    <version>2.1</version>
+    <name>JavaUtil</name>
+    <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
+    <description>JavaUtil is a utility library to speed the development of 
+        Java software. We developed it over multiple years during 
+        our internal development efforts, and it has reached a 
+        point of stability where we have decided to make it 
+        available to the outside world. The JavaUtil package aims 
+        to fill in the gaps of the Apache Commons and similar 
+        utility libraries out there.  Features include convenience
+        classes for string, collections, arrays, dates, iterators, 
+        colors, logging, unit testing, a little bit of basic 
+        statistics, database queries, caching and more.
+    </description>
+    
+    <organization>
+        <name>Emory University</name>
+        <url>http://www.emory.edu</url>
+    </organization>
+    <inceptionYear>2012</inceptionYear>
+    
+    <scm>
+        <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/tags/javautil-2.1</developerConnection>
+        <url>https://scm.cci.emory.edu/svn/aiw/tags/javautil-2.1</url>
+    </scm>
+    
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://jira.cci.emory.edu:8080/jira/secure/Dashboard.jspa</url>
+    </issueManagement>
+    
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <site>
+            <id>aiw.sourceforge.net</id>
+            <url>scp://shell.sourceforge.net/home/project-web/aiw/htdocs/dev/${project.build.finalName}</url>
+        </site>
+        <repository>
+            <id>aiw</id>
+            <name>AIW Repo</name>
+            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw/</url>
+        </repository>
+        <snapshotRepository>
+            <id>aiw-snapshots</id>
+            <name>AIW Snapshots Repo</name>
+            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <developers>
+        <developer>
+            <id>arpost</id>
+            <name>Andrew Post</name>
+            <email>arpost@emory.edu</email>
+            <roles>
+                <role>Faculty Project Lead</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>hrathod</id>
+            <name>Himanshu Rathod</name>
+            <email>Himanshu.Rathod@emory.edu</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>mmansour</id>
+            <name>Michel Mansour</name>
+            <email>mmansour@emory.edu</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>wtorian</id>
+            <name>Mike Torian</name>
+            <email>william.m.torian@emory.edu</email>
+            <roles>
+                <role>Data Warehouse Engineer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>mbrow2</id>
+            <name>Michael Brown</name>
+            <email>mbrow2@emory.edu</email>
+            <roles>
+                <role>Software Engineer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>sagravat</id>
+            <name>Sanjay Agravat</name>
+            <email>sagrava@emory.edu</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>gsmilto</id>
+            <name>Geoff Milton</name>
+            <email>gsmilto@emory.edu</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>ssturm2</id>
+            <name>Zanna Sturm</name>
+            <email>ssturm2@emory.edu</email>
+            <roles>
+                <role>User Interface Designer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>akalsan</id>
+            <name>Akshatha Kalsanka Pai</name>
+            <email>akalsan@emory.edu</email>
+            <roles>
+                <role>Software Developer</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+        <developer>
+            <id>richard.willard</id>
+            <name>Richie Willard</name>
+            <email>richard.willard@emoryhealthcare.org</email>
+            <roles>
+                <role>Project Manager</role>
+            </roles>
+            <organization>Center for Comprehensive Informatics, Emory
+                University
+            </organization>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sleepycat</groupId>
+            <artifactId>je</artifactId>
+            <version>4.1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.3</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <!--  Tests are handled by testing profiles below -->
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                        <version>2.2</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-project-info-reports-plugin
+                            </artifactId>
+                            <version>2.6</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>2.9</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-jxr-plugin</artifactId>
+                            <version>2.3</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-report-plugin
+                            </artifactId>
+                            <version>2.12.4</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>2.9.1</version>
+                            <configuration>  
+                                <configLocation>http://aiw.sourceforge.net/dev/aiw-checkstyle-1.0/protempa-checkstyle.xml</configLocation>  
+                            </configuration>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>maven-notice-plugin</artifactId>
+                <version>1.0.5</version>
+                <configuration>
+                    <noticeTemplate>etc/NOTICE.template</noticeTemplate>
+                </configuration>
+                <executions>
+                    <execution>	
+                        <id>checkontest</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>test</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>assembly/src.xml</descriptor>
+                        <descriptor>assembly/bin.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <licenseName>apache_v2</licenseName>
+                    <roots>
+                        <root>src/main</root>
+                        <root>src/test/java/</root>
+                    </roots>
+                    <extraExtensions>
+                        <!-- .xsd files are not supported by default -->
+                        <!-- but should be commented in XML style -->
+                        <xsd>xml</xsd>
+                    </extraExtensions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>test-tier1</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test.java</include>
+                            </includes>
+                            <skipTests>false</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>test-tier2</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <!--  There are no database tests, so we just want
+                            tests skipped. Change this to "false" when
+                            appropriate test classes are added -->
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <repositories>
+        <repository>
+            <id>maven.cci</id>
+            <name>CCI Maven Repository</name>
+            <url>http://maven.cci.emory.edu/nexus/content/repositories/public</url>
+        </repository>
+        <repository>
+            <id>aiw</id>
+            <name>AIW Repository</name>
+            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw</url>
+        </repository>
+    </repositories>
+</project>
