@@ -4,7 +4,7 @@
     <groupId>org.arp</groupId>
     <artifactId>javautil</artifactId>
     <packaging>jar</packaging>
-    <version>2.1</version>
+    <version>2.2-SNAPSHOT</version>
     <name>JavaUtil</name>
     <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
     <description>JavaUtil is a utility library to speed the development of 
@@ -26,8 +26,8 @@
     <inceptionYear>2012</inceptionYear>
     
     <scm>
-        <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/tags/javautil-2.1</developerConnection>
-        <url>https://scm.cci.emory.edu/svn/aiw/tags/javautil-2.1</url>
+        <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/trunk/javautil</developerConnection>
+        <url>https://scm.cci.emory.edu/svn/aiw/trunk/javautil</url>
     </scm>
     
     <issueManagement>
