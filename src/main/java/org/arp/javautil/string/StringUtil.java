@@ -43,12 +43,9 @@ public class StringUtil {
      * Returns whether the given string is
      * <code>null</code>, of length 0, or contains just whitespace.
      *
-     * @param str a
-     * <code>String</code>.
-     * @return
-     * <code>true</code> if the string is
-     * <code>null</code>, of length 0, or contains just whitespace;
-     * <code>false</code> otherwise.
+     * @param str a <code>String</code>.
+     * @return <code>true</code> if the string is <code>null</code>, of length
+     * 0, or contains just whitespace; <code>false</code> otherwise.
      */
     public static boolean getEmptyOrNull(String str) {
         return str == null || str.trim().length() == 0;
@@ -62,7 +59,7 @@ public class StringUtil {
             List<String> columnValues, char delimiter) {
         return escapeDelimitedColumns(columnValues, null, delimiter);
     }
-    
+
     public static List<String> escapeDelimitedColumns(
             List<String> columnValues, Map<String, String> replace,
             char delimiter) {
@@ -78,7 +75,7 @@ public class StringUtil {
             List<String> columnValues, char delimiter) {
         escapeDelimitedColumnsInPlace(columnValues, null, delimiter);
     }
-    
+
     public static void escapeDelimitedColumnsInPlace(
             List<String> columnValues, Map<String, String> replace,
             char delimiter) {
@@ -94,7 +91,7 @@ public class StringUtil {
             char delimiter) {
         return escapeDelimitedColumns(columnValues, null, delimiter);
     }
-    
+
     public static String[] escapeDelimitedColumns(String[] columnValues,
             Map<String, String> replace, char delimiter) {
         String[] result = new String[columnValues.length];
@@ -106,7 +103,7 @@ public class StringUtil {
         }
         return result;
     }
-    
+
     public static void escapeDelimitedColumnsInPlace(String[] columnValues,
             char delimiter) {
         escapeDelimitedColumnsInPlace(columnValues, null, delimiter);
@@ -171,16 +168,44 @@ public class StringUtil {
      * @param str a column {@link String}.
      * @param delimiter the file's delimiter character.
      * @param writer the {@link Writer} to which to write the escaped column.
-     * @throws IOException if an error writing to
-     * <code>writer</code> occurs.
+     * @throws IOException if an error writing to <code>writer</code> occurs.
+     */
+    public static void escapeAndWriteDelimitedColumn(String str,
+            char delimiter, Map<String, String> replace, Writer writer)
+            throws IOException {
+        str = doReplace(str, replace);
+        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+                && str.indexOf(delimiter) < 0)) {
+            writer.write(str);
+        } else {
+            writer.write(QUOTE);
+            for (int j = 0, n = str.length(); j < n; j++) {
+                char c = str.charAt(j);
+                if (c == QUOTE) {
+                    writer.write(QUOTE);
+                }
+                writer.write(c);
+            }
+            writer.write(QUOTE);
+        }
+    }
+
+    /**
+     * Escapes a column in a delimited file and writes it directly to a
+     * {@link Writer}. This is somewhat more efficient than
+     * {@link #escapeDelimitedColumn(java.lang.String, char)} because it does
+     * less temporary object creation. The performance difference will become
+     * more apparent when writing large delimited files.
+     *
+     * @param str a column {@link String}.
+     * @param delimiter the file's delimiter character.
+     * @param writer the {@link Writer} to which to write the escaped column.
+     * @throws IOException if an error writing to <code>writer</code> occurs.
      */
     public static void escapeAndWriteDelimitedColumn(String str,
             char delimiter, Writer writer) throws IOException {
-        if (str == null) {
-            throw new IllegalArgumentException("str cannot be null");
-        }
-        if (StringUtils.containsNone(str, SEARCH_CHARS)
-                && str.indexOf(delimiter) < 0) {
+        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+                && str.indexOf(delimiter) < 0)) {
             writer.write(str);
         } else {
             writer.write(QUOTE);
@@ -203,11 +228,8 @@ public class StringUtil {
      * @return the escaped column {@link String}.
      */
     public static String escapeDelimitedColumn(String str, char delimiter) {
-        if (str == null) {
-            throw new IllegalArgumentException("str cannot be null");
-        }
-        if (StringUtils.containsNone(str, SEARCH_CHARS)
-                && str.indexOf(delimiter) < 0) {
+        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+                && str.indexOf(delimiter) < 0)) {
             return str;
         } else {
             StringBuilder writer = new StringBuilder();
@@ -224,7 +246,7 @@ public class StringUtil {
         }
     }
 
-    private static String doReplace(String columnValue, 
+    private static String doReplace(String columnValue,
             Map<String, String> replace) {
         if (replace != null && replace.containsKey(columnValue)) {
             return replace.get(columnValue);
