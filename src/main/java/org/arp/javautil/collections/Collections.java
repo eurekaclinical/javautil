@@ -70,7 +70,7 @@ public class Collections {
     }
 
     /**
-     * Checks whether any of an arrys's elements are also in the provided set.
+     * Checks whether any of an array's elements are also in the provided set.
      *
      * @param aSet a {@link Set}.
      * @param arr an array.
