@@ -13,6 +13,11 @@
         <fileSet>
             <includes>
                 <include>README*</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <includes>
                 <include>NOTICE*</include>
                 <include>LICENSE*</include>
             </includes>
