@@ -18,23 +18,23 @@
         colors, logging, unit testing, a little bit of basic 
         statistics, database queries, caching and more.
     </description>
-    
+
     <organization>
         <name>Emory University</name>
         <url>http://www.emory.edu</url>
     </organization>
     <inceptionYear>2012</inceptionYear>
-    
+
     <scm>
         <developerConnection>scm:svn:https://scm.cci.emory.edu/svn/aiw/trunk/javautil</developerConnection>
         <url>https://scm.cci.emory.edu/svn/aiw/trunk/javautil</url>
     </scm>
-    
+
     <issueManagement>
         <system>JIRA</system>
         <url>http://jira.cci.emory.edu:8080/jira/secure/Dashboard.jspa</url>
     </issueManagement>
-    
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -59,7 +59,7 @@
             <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
-    
+
     <developers>
         <developer>
             <id>arpost</id>
@@ -204,6 +204,45 @@
             <version>2.3</version>
         </dependency>
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin
+                </artifactId>
+                <version>2.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin
+                </artifactId>
+                <version>2.16</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.11</version>
+                <configuration>
+                    <configLocation>http://aiw.sourceforge.net/dev/aiw-checkstyle-1.0/protempa-checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <build>
         <plugins>
             <plugin>
@@ -262,43 +301,6 @@
                         <version>2.5</version>
                     </dependency>
                 </dependencies>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin
-                            </artifactId>
-                            <version>2.7</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.9.1</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jxr-plugin</artifactId>
-                            <version>2.3</version>
-                            <configuration>
-                                <aggregate>true</aggregate>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-report-plugin
-                            </artifactId>
-                            <version>2.16</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <version>2.11</version>
-                            <configuration>  
-                                <configLocation>http://aiw.sourceforge.net/dev/aiw-checkstyle-1.0/protempa-checkstyle.xml</configLocation>  
-                            </configuration>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jasig.maven</groupId>
