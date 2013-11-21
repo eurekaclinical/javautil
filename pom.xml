@@ -68,29 +68,29 @@
             <roles>
                 <role>Faculty Project Lead</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
         <developer>
             <id>hrathod</id>
             <name>Himanshu Rathod</name>
-            <email>Himanshu.Rathod@emory.edu</email>
+            <email>himanshu.rathod@emory.edu</email>
             <roles>
                 <role>Software Developer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
         <developer>
             <id>mmansour</id>
             <name>Michel Mansour</name>
-            <email>mmansour@emory.edu</email>
+            <email>michel.mansour@emory.edu</email>
             <roles>
                 <role>Software Developer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -101,7 +101,7 @@
             <roles>
                 <role>Data Warehouse Engineer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -112,7 +112,7 @@
             <roles>
                 <role>Software Engineer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -123,7 +123,7 @@
             <roles>
                 <role>Software Developer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -134,7 +134,7 @@
             <roles>
                 <role>Software Developer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -145,7 +145,7 @@
             <roles>
                 <role>User Interface Designer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -156,7 +156,7 @@
             <roles>
                 <role>Software Developer</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -167,7 +167,7 @@
             <roles>
                 <role>Project Manager</role>
             </roles>
-            <organization>Center for Comprehensive Informatics, Emory
+            <organization>Department of Biomedical Informatics, Emory
                 University
             </organization>
         </developer>
@@ -218,7 +218,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7.1</version>
+                <version>2.16</version>
                 <configuration>
                     <!--  Tests are handled by testing profiles below -->
                     <skipTests>true</skipTests>
@@ -240,7 +240,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9</version>
+                <version>2.9.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -254,7 +254,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.3</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.wagon</groupId>
@@ -268,12 +268,12 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-project-info-reports-plugin
                             </artifactId>
-                            <version>2.6</version>
+                            <version>2.7</version>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.9</version>
+                            <version>2.9.1</version>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -287,12 +287,12 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-report-plugin
                             </artifactId>
-                            <version>2.12.4</version>
+                            <version>2.16</version>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-checkstyle-plugin</artifactId>
-                            <version>2.9.1</version>
+                            <version>2.11</version>
                             <configuration>  
                                 <configLocation>http://aiw.sourceforge.net/dev/aiw-checkstyle-1.0/protempa-checkstyle.xml</configLocation>  
                             </configuration>
@@ -320,12 +320,12 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.3</version>
+                <version>1.6</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.4</version>
                 <configuration>
                     <descriptors>
                         <descriptor>assembly/src.xml</descriptor>
@@ -344,7 +344,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>1.4</version>
+                <version>1.5</version>
                 <configuration>
                     <licenseName>apache_v2</licenseName>
                     <roots>
@@ -408,7 +408,7 @@
     <repositories>
         <repository>
             <id>maven.cci</id>
-            <name>CCI Maven Repository</name>
+            <name>BMI Maven Repository</name>
             <url>http://maven.cci.emory.edu/nexus/content/repositories/public</url>
         </repository>
         <repository>
