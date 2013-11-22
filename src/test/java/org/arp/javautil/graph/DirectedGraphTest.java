@@ -39,7 +39,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class DirectedGraphTest {
 
-    private ArrayList<InternalEdge> expected = new ArrayList<>();
+    private ArrayList<InternalEdge> expected = new ArrayList<InternalEdge>();
 
     @Before
     public void setUp() throws Exception {
