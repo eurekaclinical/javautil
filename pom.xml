@@ -180,7 +180,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.3.1</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -191,7 +191,7 @@
         <dependency>
             <groupId>com.sleepycat</groupId>
             <artifactId>je</artifactId>
-            <version>4.1.10</version>
+            <version>5.0.97</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
@@ -407,6 +407,7 @@
             </build>
         </profile>
     </profiles>
+
     <repositories>
         <repository>
             <id>maven.cci</id>
@@ -417,6 +418,12 @@
             <id>aiw</id>
             <name>AIW Repository</name>
             <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw</url>
+        </repository>
+        <repository>
+            <id>oracleReleases</id>
+            <name>Oracle Released Java Packages</name>
+            <url>http://download.oracle.com/maven</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 </project>
