@@ -19,13 +19,14 @@
  */
 package org.arp.javautil.string;
 
+import org.apache.commons.lang3.CharUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.lang.CharUtils;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * @author Andrew Post
