@@ -19,13 +19,16 @@
  */
 package org.arp.javautil.map;
 
+import org.arp.javautil.map.ImnuMap.DefaultValue;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.Map;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-import org.arp.javautil.map.ImnuMap.DefaultValue;
-
-public class ImnuMapTest extends TestCase {
+public class ImnuMapTest {
 
     private Map<Integer, String> nullMap;
     private Map<Integer, String> customMap;
@@ -48,19 +51,19 @@ public class ImnuMapTest extends TestCase {
         
     }
     
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        nullMap = new ImnuMap<Integer, String>();
-        customMap = new ImnuMap<Integer, String>(new IntegerParityDefaultValue());
+    @Before
+    public void setUp() throws Exception {
+        nullMap = new ImnuMap<>();
+        customMap = new ImnuMap<>(new IntegerParityDefaultValue());
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @After
+    public void tearDown() throws Exception {
+        nullMap = null;
+        customMap = null;
     }
     
-    // tests that get behaves correctly for the default ImnuMap
+    @Test
     public void testGet() {
         nullMap.put(1, "ONE");
         nullMap.put(2, "TWO");
@@ -73,7 +76,7 @@ public class ImnuMapTest extends TestCase {
         assertEquals(nullMap.get("foo"), null);
     }
     
-    // tests custom DefaultValue implementation
+    @Test
     public void testGetCustom() {
         customMap.put(1, "ONE");
         customMap.put(2, "TWO");

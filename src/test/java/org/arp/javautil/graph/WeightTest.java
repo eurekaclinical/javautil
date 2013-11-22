@@ -19,96 +19,86 @@
  */
 package org.arp.javautil.graph;
 
+import org.junit.Test;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
 /**
  * @author Andrew Post
  */
-public class WeightTest extends TestCase {
+public class WeightTest {
 
-	/**
-	 * Constructor for WeightTest.
-	 * 
-	 * @param arg0
-	 */
-	public WeightTest(String arg0) {
-		super(arg0);
-	}
+    @Test
+    public void testAdd() {
+        assertEquals(new Weight(3L).add(new Weight(1L)).value(), 4L);
+    }
 
-	/*
-	 * @see TestCase#setUp()
-	 */
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
-	}
+    @Test
+    public void testSubtract() {
+        assertEquals(new Weight(3L).subtract(new Weight(1L)).value(), 2L);
+    }
 
-	/*
-	 * @see TestCase#tearDown()
-	 */
-	@Override
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
+    @Test
+    public void testCopyConstructor() {
+        Weight w = new Weight(3L);
+        assertEquals(w, new Weight(w));
+    }
 
-	public void testAdd() {
-		assertEquals(new Weight(3L).add(new Weight(1L)).value(), 4L);
-	}
+    @Test
+    public void testGreaterThanNotInfinity() {
+        assertTrue((new Weight(100000000L)).greaterThan(100000L));
+    }
 
-	public void testSubtract() {
-		assertEquals(new Weight(3L).subtract(new Weight(1L)).value(), 2L);
-	}
+    @Test
+    public void testLessThanNotInfinity() {
+        assertTrue((new Weight(1L)).lessThan(2L));
+    }
 
-	public void testCopyConstructor() {
-		Weight w = new Weight(3L);
-		assertEquals(w, new Weight(w));
-	}
+    @Test
+    public void testPosInfinityGreaterThanNotInfinity() {
+        assertTrue(WeightFactory.POS_INFINITY.greaterThan(Long.MAX_VALUE));
+    }
 
-	public void testGreaterThanNotInfinity() {
-		assertTrue((new Weight(100000000L)).greaterThan(100000L));
-	}
+    @Test
+    public void testNegInfinityLessThanNotInfinity() {
+        assertTrue(WeightFactory.NEG_INFINITY.lessThan(Long.MIN_VALUE));
+    }
 
-	public void testLessThanNotInfinity() {
-		assertTrue((new Weight(1L)).lessThan(2L));
-	}
+    @Test
+    public void testCompareNegInfinityPosInfinity() {
+        assertTrue(WeightFactory.NEG_INFINITY.compareTo(WeightFactory.POS_INFINITY) == -1);
+    }
 
-	public void testPosInfinityGreaterThanNotInfinity() {
-		assertTrue(WeightFactory.POS_INFINITY.greaterThan(Long.MAX_VALUE));
-	}
+    @Test
+    public void testComparePosInfinityNegInfinity() {
+        assertTrue(WeightFactory.POS_INFINITY.compareTo(WeightFactory.NEG_INFINITY) == 1);
+    }
 
-	public void testNegInfinityLessThanNotInfinity() {
-		assertTrue(WeightFactory.NEG_INFINITY.lessThan(Long.MIN_VALUE));
-	}
+    @Test
+    public void testComparePosInfinityPosInfinity() {
+        assertEquals(WeightFactory.POS_INFINITY, WeightFactory.POS_INFINITY);
+    }
 
-	public void testCompareNegInfinityPosInfinity() {
-		assertTrue(WeightFactory.NEG_INFINITY.compareTo(WeightFactory.POS_INFINITY) == -1);
-	}
+    @Test
+    public void testCompareNegInfinityNegInfinity() {
+        assertEquals(WeightFactory.NEG_INFINITY, WeightFactory.NEG_INFINITY);
+    }
 
-	public void testComparePosInfinityNegInfinity() {
-		assertTrue(WeightFactory.POS_INFINITY.compareTo(WeightFactory.NEG_INFINITY) == 1);
-	}
+    @Test
+    public void testIsWithinRange1() {
+        assertTrue((new Weight(20)).isWithinRange(new Weight(20),
+                new Weight(20)));
+    }
 
-	public void testComparePosInfinityPosInfinity() {
-		assertEquals(WeightFactory.POS_INFINITY, WeightFactory.POS_INFINITY);
-	}
+    @Test
+    public void testIsWithinRange2() {
+        assertTrue((new Weight(20)).isWithinRange(WeightFactory.ZERO,
+                WeightFactory.POS_INFINITY));
+    }
 
-	public void testCompareNegInfinityNegInfinity() {
-		assertEquals(WeightFactory.NEG_INFINITY, WeightFactory.NEG_INFINITY);
-	}
-
-	public void testIsWithinRange1() {
-		assertTrue((new Weight(20)).isWithinRange(new Weight(20),
-				new Weight(20)));
-	}
-
-	public void testIsWithinRange2() {
-		assertTrue((new Weight(20)).isWithinRange(WeightFactory.ZERO,
-				WeightFactory.POS_INFINITY));
-	}
-
-	public void testIsWithinRange3() {
-		assertFalse((new Weight(20)).isWithinRange(WeightFactory.ZERO,
-				WeightFactory.NEG_INFINITY));
-	}
+    @Test
+    public void testIsWithinRange3() {
+        assertFalse((new Weight(20)).isWithinRange(WeightFactory.ZERO,
+                WeightFactory.NEG_INFINITY));
+    }
 }

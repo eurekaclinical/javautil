@@ -19,18 +19,23 @@
  */
 package org.arp.javautil.collections;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import junit.framework.TestCase;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for {@link Collections#putList}.
  * 
  * @author Andrew Post
  */
-public class PutListTest extends TestCase {
+public class PutListTest {
+
+    @Test
     public void testPutIntoEmptyMap() {
         Map<String, List<String>> testMap =
                 new HashMap<String, List<String>>();
@@ -40,6 +45,7 @@ public class PutListTest extends TestCase {
         assertEquals(expected, testMap.get("foo"));
     }
 
+    @Test
     public void testAddToListInMap() {
         Map<String, List<String>> testMap =
                 new HashMap<String, List<String>>();

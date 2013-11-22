@@ -19,14 +19,20 @@
  */
 package org.arp.javautil.io;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.sql.SQLException;
-import junit.framework.TestCase;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
  * @author Andrew Post
  */
-public class RetryerTest extends TestCase {
+public class RetryerTest {
+
     public static class MockRetryable implements Retryable<SQLException> {
         private final int failUntilAttempt;
         private int attempt;
@@ -54,112 +60,128 @@ public class RetryerTest extends TestCase {
             }
         }
     }
-    
+
+    @Test
     public void testSuccessfulOnFirstTry() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(1);
         retryer.execute(operation);
         assertTrue(retryer.getErrors().isEmpty());
     }
-    
+
+    @Test
     public void testSuccessfulOnFirstTryNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(1);
         retryer.execute(operation);
         assertEquals(1, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testSuccessfulOnSecondTry() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(2);
         retryer.execute(operation);
         assertEquals(1, retryer.getErrors().size());
     }
-    
+
+    @Test
     public void testSuccessfulOnSecondTryNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(2);
         retryer.execute(operation);
         assertEquals(2, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testSuccessfulOnThirdTry() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(3);
         retryer.execute(operation);
         assertEquals(2, retryer.getErrors().size());
     }
-    
+
+    @Test
     public void testSuccessfulOnThirdTryNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(3);
         retryer.execute(operation);
         assertEquals(3, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testSuccessful() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(4);
         assertTrue(retryer.execute(operation));
     }
-    
+
+    @Test
     public void testSuccessfulNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(4, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testSuccessfulOnFourthTryCheckErrors() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(3, retryer.getErrors().size());
     }
-    
+
+    @Test
     public void testNeverSuccessful() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(5);
-        assertFalse(retryer.execute(operation));
+        Assert.assertFalse(retryer.execute(operation));
     }
-    
+
+    @Test
     public void testNeverSuccessfulNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(5);
         retryer.execute(operation);
         assertEquals(4, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testFailedAfterFourAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(3);
         MockRetryable operation = new MockRetryable(5);
         retryer.execute(operation);
         assertEquals(4, retryer.getErrors().size());
     }
-    
+
+    @Test
     public void testFailOnInvalidNumberOfRetries() {
         try {
             new Retryer<SQLException>(-1);
-            fail();
+            Assert.fail();
         } catch (IllegalArgumentException iae) {
             
         }
     }
-    
+
+    @Test
     public void testNoRetriesFail() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(0);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(1, retryer.getErrors().size());
     }
-    
+
+    @Test
     public void testNoRetriesFailNumberOfAttempts() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(0);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(1, retryer.getAttempts());
     }
-    
+
+    @Test
     public void testNoRetriesSuccess() {
         Retryer<SQLException> retryer = new Retryer<SQLException>(0);
         MockRetryable operation = new MockRetryable(1);
