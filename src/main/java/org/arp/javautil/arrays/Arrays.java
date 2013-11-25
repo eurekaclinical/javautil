@@ -118,6 +118,7 @@ public final class Arrays {
      * @param collection a {@link Collection}. Cannot be <code>null</code>.
      * @param arr zero or more {@link Object[]}.
      */
+    @SafeVarargs
     public static <E> void addAll(Collection<E> collection, E[]... arr) {
         if (collection == null) {
             throw new IllegalArgumentException("collection cannot be null");
@@ -137,6 +138,7 @@ public final class Arrays {
      * @param arrs an {@link E[]}.
      * @return a newly created random access {@link List<E>}.
      */
+    @SafeVarargs
     public static <E> List<E> asList(E[]... arrs) {
         int size = 0;
         for (E[] arr : arrs) {
