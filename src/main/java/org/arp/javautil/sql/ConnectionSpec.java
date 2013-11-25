@@ -40,7 +40,7 @@ public interface ConnectionSpec {
     /**
      * Performs some processing on this connection spec.
      *
-     * @param visitor
+     * @param connectionSpecVisitor
      *            a {@link ConnectionSpecVisitor}.
      */
     void accept(ConnectionSpecVisitor connectionSpecVisitor);
