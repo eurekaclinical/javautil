@@ -37,7 +37,7 @@ public class UpdatingVarCalc {
      * order to calculate the variance or standard deviation. The first point
      * should be specified in this constructor.
      * 
-     * @param point
+     * @param val
      *            the first of a list of points.
      */
     public UpdatingVarCalc(double val) {
