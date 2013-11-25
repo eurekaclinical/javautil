@@ -60,7 +60,7 @@ public enum DatabaseAPI {
 
     /**
      * Gets a {@link ConnectionSpec} implementation that is specific to the
-     * selected database API for getting/creating a database {@link Connection}.
+     * selected database API for getting/creating a database {@link java.sql.Connection}.
      * 
      * @param databaseId the identifier for the database (JDBC URL for
      * the {@link java.sql.DriverManager} API, JNDI name for the
