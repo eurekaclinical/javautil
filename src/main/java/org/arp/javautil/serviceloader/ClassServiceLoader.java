@@ -70,7 +70,7 @@ public class ClassServiceLoader {
         if (loader == null) {
             loader = Thread.currentThread().getContextClassLoader();
         }
-        List<Class<? extends S>> services = new ArrayList<Class<? extends S>>();
+        List<Class<? extends S>> services = new ArrayList<>();
         try {
             Enumeration<URL> e = loader.getResources("META-INF/services/"
                     + service.getName());

@@ -49,7 +49,7 @@ public class Retryer<E> {
             throw new IllegalArgumentException("retries must be >= 0");
         }
         this.retries = retries;
-        this.errors = new ArrayList<E>();
+        this.errors = new ArrayList<>();
     }
     
     /**
@@ -83,7 +83,7 @@ public class Retryer<E> {
      * @return a newly created {@link List} of errors.
      */
     public List<E> getErrors() {
-        return new ArrayList<E>(this.errors);
+        return new ArrayList<>(this.errors);
     }
     
     /**

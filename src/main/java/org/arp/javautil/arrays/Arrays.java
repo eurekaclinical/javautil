@@ -104,7 +104,7 @@ public final class Arrays {
     public static <E> Set<E> asSet(E[] objs) {
         Set<E> objSet = null;
         if (objs != null) {
-        objSet = new HashSet<E>();
+        objSet = new HashSet<>();
         for (E obj : objs) {
             objSet.add(obj);
         }
@@ -145,7 +145,7 @@ public final class Arrays {
             }
             size += arr.length;
         }
-        List<E> result = new ArrayList<E>(size);
+        List<E> result = new ArrayList<>(size);
         addAll(result, arrs);
         return result;
     }

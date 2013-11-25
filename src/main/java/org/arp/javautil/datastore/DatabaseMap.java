@@ -48,9 +48,9 @@ public class DatabaseMap<K, V> implements Map<K, V> {
             this.db = CacheDatabase.createDatabase(dbName);
 
             ClassCatalog catalog = CacheDatabase.createOrGetClassCatalog();
-            EntryBinding<K> kBinding = new SerialBinding<K>(catalog, null);
-            EntryBinding<V> vBinding = new SerialBinding<V>(catalog, null);
-            storedMap = new StoredMap<K, V>(db, kBinding, vBinding, true);
+            EntryBinding<K> kBinding = new SerialBinding<>(catalog, null);
+            EntryBinding<V> vBinding = new SerialBinding<>(catalog, null);
+            storedMap = new StoredMap<>(db, kBinding, vBinding, true);
         } catch (DatabaseException dbe) {
             throw new DatabaseError(dbe);
         }

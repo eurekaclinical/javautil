@@ -50,9 +50,9 @@ public class CompositeList<E> extends AbstractSequentialList<E> implements Seria
                             "Cannot have any null lists");
                 }
             }
-            this.collOfLists = new ArrayList<List<E>>(collOfLists);
+            this.collOfLists = new ArrayList<>(collOfLists);
         } else {
-            this.collOfLists = new ArrayList<List<E>>();
+            this.collOfLists = new ArrayList<>();
         }
         
     }
@@ -84,7 +84,7 @@ public class CompositeList<E> extends AbstractSequentialList<E> implements Seria
         private int index;
 
         private CompositeListIterator(int i) {
-            this.itrs = new ArrayList<ListIterator<E>>(CompositeList.this.collOfLists.size());
+            this.itrs = new ArrayList<>(CompositeList.this.collOfLists.size());
             for (List<E> list : CompositeList.this.collOfLists) {
                 itrs.add(list.listIterator());
             }

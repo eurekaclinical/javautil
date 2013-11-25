@@ -48,7 +48,7 @@ public class Collections {
             List<V> l = map.get(key);
             l.add(valueElt);
         } else {
-            List<V> l = new ArrayList<V>();
+            List<V> l = new ArrayList<>();
             l.add(valueElt);
             map.put(key, l);
         }
@@ -87,7 +87,7 @@ public class Collections {
     
     public static <K> Set<K> intersection(Collection<Set<K>> sets) {
         boolean firstPass = true;
-        Set<K> result = new HashSet<K>();
+        Set<K> result = new HashSet<>();
         for (Set<K> set : sets) {
             if (firstPass) {
                 result.addAll(set);
@@ -101,7 +101,7 @@ public class Collections {
     
     public static <K> Set<K> intersection(Set<K>... sets) {
         boolean firstPass = true;
-        Set<K> result = new HashSet<K>();
+        Set<K> result = new HashSet<>();
         for (Set<K> set : sets) {
             if (firstPass) {
                 result.addAll(set);

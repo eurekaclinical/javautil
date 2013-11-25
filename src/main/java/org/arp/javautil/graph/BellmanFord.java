@@ -62,7 +62,7 @@ public final class BellmanFord {
 	 */
 	public static Map<?, Weight> calcShortestDistances(
 			Object sourceOrDest, DirectedGraph g, Mode mode) {
-		Map<Object, Weight> shortestDistances = new HashMap<Object, Weight>(g
+		Map<Object, Weight> shortestDistances = new HashMap<>(g
 				.size() * 4 / 3 + 1);
 		if (hasNegativeCyclePrivate(sourceOrDest, g, shortestDistances, mode)) {
 			return null;

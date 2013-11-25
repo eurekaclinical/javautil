@@ -243,7 +243,7 @@ public final class SQLExecutor {
         RetryableStatementExecutor executor =
                 new RetryableStatementExecutor(connectionCreator, sql,
                 resultProcessor);
-        Retryer<SQLException> retryer = new Retryer<SQLException>(RETRIES);
+        Retryer<SQLException> retryer = new Retryer<>(RETRIES);
         if (!retryer.execute(executor)) {
             throw assembleSQLException(retryer.getErrors());
         }
@@ -305,7 +305,7 @@ public final class SQLExecutor {
         RetryableExecutor executor =
                 new RetryablePreparedStatementExecutor(connectionCreator, sql,
                 stmtPreparer, resultProcessor);
-        Retryer<SQLException> retryer = new Retryer<SQLException>(RETRIES);
+        Retryer<SQLException> retryer = new Retryer<>(RETRIES);
         if (!retryer.execute(executor)) {
             throw assembleSQLException(retryer.getErrors());
         }

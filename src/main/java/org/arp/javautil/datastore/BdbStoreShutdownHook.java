@@ -37,7 +37,7 @@ public final class BdbStoreShutdownHook extends Thread {
     private final boolean deleteOnExit;
 
     BdbStoreShutdownHook(boolean deleteOnExit) {
-        this.envInfos = new ArrayList<EnvironmentInfo>();
+        this.envInfos = new ArrayList<>();
         this.deleteOnExit = deleteOnExit;
     }
 

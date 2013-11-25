@@ -70,7 +70,7 @@ public abstract class BdbStoreFactory<E, V> {
                 this.envInfo.getEnvironment().openDatabase(null, dbName, 
                 dbConfig);
         this.databaseHandles.add(databaseHandle);
-        return new BdbMap<E, V>(this.envInfo, databaseHandle);
+        return new BdbMap<>(this.envInfo, databaseHandle);
     }
 
     protected abstract EnvironmentConfig createEnvConfig();

@@ -42,9 +42,9 @@ public class BdbMap<K, V> implements DataStore<K, V> {
         this.envInfo = envInfo;
         StoredClassCatalog catalog = envInfo.getClassCatalog();
         try {
-            EntryBinding<K> kBinding = new SerialBinding<K>(catalog, null);
-            EntryBinding<V> vBinding = new SerialBinding<V>(catalog, null);
-            storedMap = new StoredMap<K, V>(db, kBinding, vBinding, true);
+            EntryBinding<K> kBinding = new SerialBinding<>(catalog, null);
+            EntryBinding<V> vBinding = new SerialBinding<>(catalog, null);
+            storedMap = new StoredMap<>(db, kBinding, vBinding, true);
         } catch (DatabaseException ex) {
             throw new DataStoreError(ex);
         }

@@ -64,7 +64,7 @@ public class StringUtil {
     public static List<String> escapeDelimitedColumns(
             List<String> columnValues, Map<String, String> replace,
             char delimiter) {
-        List<String> result = new ArrayList<String>(columnValues.size());
+        List<String> result = new ArrayList<>(columnValues.size());
         for (String value : columnValues) {
             value = doReplace(value, replace);
             result.add(StringUtil.escapeDelimitedColumn(value, delimiter));

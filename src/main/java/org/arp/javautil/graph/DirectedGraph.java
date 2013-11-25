@@ -120,7 +120,7 @@ public final class DirectedGraph {
             this.capacity = DEFAULT_INITIAL_CAPACITY;
         }
         edges = new Edge[initialCapacity][initialCapacity];
-        vertices = new HashMap<Object, VertexMetadata>(initialCapacity);
+        vertices = new HashMap<>(initialCapacity);
         freeList = new FreeList();
         for (int row = capacity - 1; row >= 0; row--) {
             freeList.add(row);

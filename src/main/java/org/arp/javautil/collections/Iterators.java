@@ -66,7 +66,7 @@ public class Iterators {
      * @return a <code>List</code>.
      */
     public static <T> List<T> asList(Iterator<T> itr) {
-        List<T> l = new ArrayList<T>();
+        List<T> l = new ArrayList<>();
         if (itr != null) {
             while (itr.hasNext()) {
                 l.add(itr.next());

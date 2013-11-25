@@ -34,7 +34,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class TempDirectoryCreator extends UniqueDirectoryCreator {
 
-    private final static List<File> TEMP_DIRS = new ArrayList<File>();
+    private final static List<File> TEMP_DIRS = new ArrayList<>();
 
     static {
         Runtime.getRuntime().addShutdownHook(
