@@ -98,7 +98,8 @@ public class Collections {
         }
         return result;
     }
-    
+
+    @SafeVarargs
     public static <K> Set<K> intersection(Set<K>... sets) {
         boolean firstPass = true;
         Set<K> result = new HashSet<>();
