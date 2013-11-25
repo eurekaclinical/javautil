@@ -32,7 +32,7 @@ public class BdbCacheFactoryTest {
         String envName = BdbUtil.uniqueEnvironment("bdb-store-test", null, 
                 FileUtils.getTempDirectory());
         boolean deleteOnExit = true;
-        BdbCacheFactory factory = new BdbCacheFactory(envName, deleteOnExit);
+        BdbCacheFactory<String, String> factory = new BdbCacheFactory<>(envName, deleteOnExit);
         DataStore<String, String> store = factory.newInstance("BdbTest");
         store.put("foo", "bar");
         String bar = store.get("foo");
