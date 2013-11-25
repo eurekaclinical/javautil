@@ -38,9 +38,9 @@ public class PutListTest {
     @Test
     public void testPutIntoEmptyMap() {
         Map<String, List<String>> testMap =
-                new HashMap<String, List<String>>();
+                new HashMap<>();
         Collections.putList(testMap, "foo", "bar");
-        List<String> expected = new ArrayList<String>();
+        List<String> expected = new ArrayList<>();
         expected.add("bar");
         assertEquals(expected, testMap.get("foo"));
     }
@@ -48,12 +48,12 @@ public class PutListTest {
     @Test
     public void testAddToListInMap() {
         Map<String, List<String>> testMap =
-                new HashMap<String, List<String>>();
-        List<String> value = new ArrayList<String>();
+                new HashMap<>();
+        List<String> value = new ArrayList<>();
         value.add("bar");
         testMap.put("foo", value);
         Collections.putList(testMap, "foo", "baz");
-        List<String> expected = new ArrayList<String>();
+        List<String> expected = new ArrayList<>();
         expected.add("bar");
         expected.add("baz");
         assertEquals(expected, testMap.get("foo"));

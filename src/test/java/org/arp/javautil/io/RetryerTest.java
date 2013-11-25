@@ -63,7 +63,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnFirstTry() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(1);
         retryer.execute(operation);
         assertTrue(retryer.getErrors().isEmpty());
@@ -71,7 +71,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnFirstTryNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(1);
         retryer.execute(operation);
         assertEquals(1, retryer.getAttempts());
@@ -79,7 +79,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnSecondTry() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(2);
         retryer.execute(operation);
         assertEquals(1, retryer.getErrors().size());
@@ -87,7 +87,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnSecondTryNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(2);
         retryer.execute(operation);
         assertEquals(2, retryer.getAttempts());
@@ -95,7 +95,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnThirdTry() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(3);
         retryer.execute(operation);
         assertEquals(2, retryer.getErrors().size());
@@ -103,7 +103,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnThirdTryNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(3);
         retryer.execute(operation);
         assertEquals(3, retryer.getAttempts());
@@ -111,14 +111,14 @@ public class RetryerTest {
 
     @Test
     public void testSuccessful() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(4);
         assertTrue(retryer.execute(operation));
     }
 
     @Test
     public void testSuccessfulNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(4, retryer.getAttempts());
@@ -126,7 +126,7 @@ public class RetryerTest {
 
     @Test
     public void testSuccessfulOnFourthTryCheckErrors() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(3, retryer.getErrors().size());
@@ -134,14 +134,14 @@ public class RetryerTest {
 
     @Test
     public void testNeverSuccessful() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(5);
         Assert.assertFalse(retryer.execute(operation));
     }
 
     @Test
     public void testNeverSuccessfulNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(5);
         retryer.execute(operation);
         assertEquals(4, retryer.getAttempts());
@@ -149,7 +149,7 @@ public class RetryerTest {
 
     @Test
     public void testFailedAfterFourAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(3);
+        Retryer<SQLException> retryer = new Retryer<>(3);
         MockRetryable operation = new MockRetryable(5);
         retryer.execute(operation);
         assertEquals(4, retryer.getErrors().size());
@@ -167,7 +167,7 @@ public class RetryerTest {
 
     @Test
     public void testNoRetriesFail() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(0);
+        Retryer<SQLException> retryer = new Retryer<>(0);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(1, retryer.getErrors().size());
@@ -175,7 +175,7 @@ public class RetryerTest {
 
     @Test
     public void testNoRetriesFailNumberOfAttempts() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(0);
+        Retryer<SQLException> retryer = new Retryer<>(0);
         MockRetryable operation = new MockRetryable(4);
         retryer.execute(operation);
         assertEquals(1, retryer.getAttempts());
@@ -183,7 +183,7 @@ public class RetryerTest {
 
     @Test
     public void testNoRetriesSuccess() {
-        Retryer<SQLException> retryer = new Retryer<SQLException>(0);
+        Retryer<SQLException> retryer = new Retryer<>(0);
         MockRetryable operation = new MockRetryable(1);
         assertTrue(retryer.execute(operation));
     }

@@ -53,8 +53,8 @@ public class ImnuMapTest {
     
     @Before
     public void setUp() throws Exception {
-        nullMap = new ImnuMap<Integer, String>();
-        customMap = new ImnuMap<Integer, String>(new IntegerParityDefaultValue());
+        nullMap = new ImnuMap<>();
+        customMap = new ImnuMap<>(new IntegerParityDefaultValue());
     }
 
     @After
