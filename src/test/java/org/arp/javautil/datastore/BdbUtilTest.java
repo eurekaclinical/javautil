@@ -19,16 +19,18 @@
  */
 package org.arp.javautil.datastore;
 
-import java.io.IOException;
-import junit.framework.Assert;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.IOException;
 
 /**
  *
  * @author Andrew Post
  */
 public class BdbUtilTest {
+
     @Test
     public void testTempEnvironment() throws IOException {
         String envName = BdbUtil.uniqueEnvironment("bdb-store-test", null,
