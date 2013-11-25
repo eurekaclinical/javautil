@@ -19,8 +19,9 @@
  */
 package org.arp.javautil.graph;
 
+import org.apache.commons.collections4.map.ReferenceMap;
+
 import java.util.Map;
-import org.apache.commons.collections.map.ReferenceMap;
 
 /**
  *
@@ -49,18 +50,14 @@ public class WeightFactory {
      */
     public static final Weight ZERO = new Weight(0L);
     
-    private static final Map cache = new ReferenceMap();
+    private static final Map<Number, Weight> cache = new ReferenceMap<>();
 
     public Weight getInstance() {
         return getInstance(null);
     }
 
-    public Weight getInstance(long val) {
-        return getInstance((Number) val);
-    }
-
     public Weight getInstance(Number val) {
-        Weight weight = (Weight) cache.get(val);
+        Weight weight = cache.get(val);
         if (weight == null) {
             weight = new Weight(val);
             cache.put(val, weight);
