@@ -60,7 +60,7 @@ public class Collections {
      * value.
      * @param map a {@link Map}.
      * @param key a key.
-     * @param values a {@link Collection<? extends V>} of values.
+     * @param values a {@link Collection} of values.
      */
     public static <K, V> void putListMult(Map<K, List<V>> map, K key,
             Collection<? extends V> values) {

@@ -116,7 +116,7 @@ public final class Arrays {
      * Adds the contents of one or more arrays to a collection.
      *
      * @param collection a {@link Collection}. Cannot be <code>null</code>.
-     * @param arr zero or more {@link Object[]}.
+     * @param arr zero or more <code>E[]</code>.
      */
     @SafeVarargs
     public static <E> void addAll(Collection<E> collection, E[]... arr) {
@@ -135,8 +135,8 @@ public final class Arrays {
      * provided arrays.
      *
      * @param <E> any class.
-     * @param arrs an {@link E[]}.
-     * @return a newly created random access {@link List<E>}.
+     * @param arrs one or more <code>E[]</code>.
+     * @return a newly created random access {@link List}.
      */
     @SafeVarargs
     public static <E> List<E> asList(E[]... arrs) {

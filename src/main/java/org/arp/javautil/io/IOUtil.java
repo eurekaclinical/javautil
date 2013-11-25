@@ -19,11 +19,12 @@
  */
 package org.arp.javautil.io;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.*;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
-import org.apache.commons.io.IOUtils;
 
 /**
  * Convenience routines for reading files, resources, readers, and input
@@ -195,7 +196,7 @@ public final class IOUtil {
      *
      * @param name name {@link String} of the desired resource. Cannot be
      * <code>null</code>.
-     * @param cls the {@link Class<?>} whose loader to use.
+     * @param cls the {@link Class} whose loader to use.
      * @return an {@link InputStream}.
      * @throws IOException if no resource with this name is found.
      */

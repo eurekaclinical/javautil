@@ -19,11 +19,6 @@
  */
 package org.arp.javautil.datastore;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
 import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.ClassCatalog;
 import com.sleepycat.bind.serial.SerialBinding;
@@ -31,10 +26,14 @@ import com.sleepycat.collections.StoredMap;
 import com.sleepycat.je.Database;
 import com.sleepycat.je.DatabaseException;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
 /**
  * @deprecated Implement the {@link DataStore} interface to define new caches and
- *             permanent stores. Clients should use {@link DataStoreFactory} to get
- *             stores.
+ *             permanent stores.
  */
 @Deprecated
 public class DatabaseMap<K, V> implements Map<K, V> {
