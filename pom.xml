@@ -26,7 +26,8 @@
     <inceptionYear>2012</inceptionYear>
 
     <scm>
-        <developerConnection>scm:git:ssh://git.cci.emory.edu/opt/git/aiw/javautil</developerConnection>
+		<developerConnection>scm:git:ssh://git.cci.emory.edu/opt/git/aiw/javautil.git</developerConnection>
+		<tag>HEAD</tag>
     </scm>
 
     <issueManagement>
