@@ -26,7 +26,7 @@
     <inceptionYear>2012</inceptionYear>
 
     <scm>
-        <developerConnection>scm:git:ssh://git.cci.emory.edu/opt/git/aiw/{projectName}</developerConnection>
+        <developerConnection>scm:git:ssh://git.cci.emory.edu/opt/git/aiw/${project.name}</developerConnection>
     </scm>
 
     <issueManagement>
