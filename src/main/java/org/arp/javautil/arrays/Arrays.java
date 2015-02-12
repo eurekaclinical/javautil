@@ -96,7 +96,7 @@ public final class Arrays {
 
     /**
      * Returns a Set (specfically, a HashSet) with all the unique elements from
-     * the given array of objects.
+     * the given array of objects. The set is mutable.
      *
      * @param objs An array of objects.
      * @return A Set object containing all the unique elements from the array.
