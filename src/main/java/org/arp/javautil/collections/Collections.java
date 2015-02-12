@@ -68,6 +68,54 @@ public class Collections {
             putList(map, key, value);
         }
     }
+    
+    /**
+     * Puts a value into a map of key -> set of values. If the specified key
+     * is new, it creates a {@link HashSet} as its value.
+     * @param map a {@link Map}.
+     * @param key a key.
+     * @param valueElt a value.
+     */
+    public static <K, V> void putSet(Map<K, Set<V>> map, K key, V valueElt) {
+        if (map.containsKey(key)) {
+            Set<V> l = map.get(key);
+            l.add(valueElt);
+        } else {
+            Set<V> l = new HashSet<>();
+            l.add(valueElt);
+            map.put(key, l);
+        }
+    }
+    
+    /**
+     * Puts a collection of values into a map of key -> set of values.
+     * If the specified key is new, it creates an {@link ArrayList} as its
+     * value.
+     * @param map a {@link Map}.
+     * @param key a key.
+     * @param values a {@link Collection} of values.
+     */
+    public static <K, V> void putSetMult(Map<K, Set<V>> map, K key,
+            Collection<? extends V> values) {
+        for (V value : values) {
+            putSet(map, key, value);
+        }
+    }
+    
+    /**
+     * Copies all of the mappings from the second map to the first. The value
+     * for each key is the union of the first and second maps' values for that
+     * key.
+     * @param <K>
+     * @param <V>
+     * @param map the first {@link Map}.
+     * @param other the second {@link Map}.
+     */
+    public static <K, V> void putSetAll(Map<K, Set<V>> map, Map<K, Set<V>> other) {
+        for (Map.Entry<K, Set<V>> me : other.entrySet()) {
+            putSetMult(map, me.getKey(), me.getValue());
+        }
+    }
 
     /**
      * Checks whether any of an array's elements are also in the provided set.
