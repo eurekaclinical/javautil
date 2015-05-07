@@ -49,7 +49,7 @@ public class WeightFactory {
      * Special value representing zero.
      */
     public static final Weight ZERO = new Weight(0L);
-    
+
     private static final Map<Number, Weight> cache = new ReferenceMap<>();
 
     public Weight getInstance() {
@@ -57,10 +57,13 @@ public class WeightFactory {
     }
 
     public Weight getInstance(Number val) {
-        Weight weight = cache.get(val);
-        if (weight == null) {
-            weight = new Weight(val);
-            cache.put(val, weight);
+        Weight weight;
+        synchronized (cache) {
+            weight = cache.get(val);
+            if (weight == null) {
+                weight = new Weight(val);
+                cache.put(val, weight);
+            }
         }
         return weight;
     }
