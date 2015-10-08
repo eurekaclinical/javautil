@@ -36,6 +36,8 @@ public interface ConnectionSpec {
      * @throws SQLException if an error occurs getting the connection.
      */
     Connection getOrCreate() throws SQLException;
+    
+    boolean isAutoCommitEnabled();
 
     /**
      * Performs some processing on this connection spec.

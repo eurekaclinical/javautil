@@ -33,7 +33,8 @@ import javax.sql.DataSource;
  * @author Andrew Post
  * @see InitialContext
  */
-public class DataSourceConnectionSpec implements ConnectionSpec {
+public class DataSourceConnectionSpec extends AbstractConnectionSpec {
+
     private final String user;
     private final String password;
     private final DataSource dataSource;
@@ -45,6 +46,10 @@ public class DataSourceConnectionSpec implements ConnectionSpec {
      * @param jndiName a JNDI name {@link String}.
      * @throws NamingException if the specified JNDI name is invalid.
      */
+    public DataSourceConnectionSpec(String jndiName, boolean autoCommitEnabled) throws NamingException {
+        this(jndiName, null, null, autoCommitEnabled);
+    }
+    
     public DataSourceConnectionSpec(String jndiName) throws NamingException {
         this(jndiName, null, null);
     }
@@ -53,25 +58,36 @@ public class DataSourceConnectionSpec implements ConnectionSpec {
      * Creates an instance that will get connections from the database with the
      * specified JNDI name using the specified username and password. No
      * environment properties are supplied when looking up the JNDI name. See
-     * the javadoc for {@link InitialContext} for a description of
-     * environment properties.
-     * 
+     * the javadoc for {@link InitialContext} for a description of environment
+     * properties.
+     *
      * @param jndiName a JNDI name {@link String}.
      * @param user a username {@link String}.
      * @param password a password {@link String}.
      * @throws NamingException if an error occurs during JNDI lookup.
      */
-    public DataSourceConnectionSpec(String jndiName, 
+    public DataSourceConnectionSpec(String jndiName,
+            String user, String password, boolean autoCommitEnabled) throws NamingException {
+        this(jndiName, null, user, password, autoCommitEnabled);
+    }
+    
+    public DataSourceConnectionSpec(String jndiName,
             String user, String password) throws NamingException {
         this(jndiName, null, user, password);
+    }
+    
+    public DataSourceConnectionSpec(String jndiName,
+            Hashtable<?, ?> environment,
+            String user, String password) throws NamingException {
+        this(jndiName, environment, user, password, true);
     }
 
     /**
      * Creates an instance that will get connections from the database with the
      * specified JNDI name using the specified username and password. The
-     * specified environment will be used when looking up the JNDI name. See
-     * the javadoc for {@link InitialContext} for a description of
-     * environment properties.
+     * specified environment will be used when looking up the JNDI name. See the
+     * javadoc for {@link InitialContext} for a description of environment
+     * properties.
      *
      * @param jndiName a JNDI name {@link String}.
      * @param environment a {@link Hashtable} of environment properties.
@@ -80,10 +96,12 @@ public class DataSourceConnectionSpec implements ConnectionSpec {
      * @throws NamingException if an error occurs during JNDI lookup.
      */
     public DataSourceConnectionSpec(String jndiName,
-            Hashtable<?,?> environment,
-            String user, String password) throws NamingException {
-        if (jndiName == null)
+            Hashtable<?, ?> environment,
+            String user, String password, boolean autoCommitEnabled) throws NamingException {
+        super(autoCommitEnabled);
+        if (jndiName == null) {
             throw new IllegalArgumentException("jndiName cannot be null");
+        }
         this.user = user;
         this.password = password;
 
@@ -96,8 +114,8 @@ public class DataSourceConnectionSpec implements ConnectionSpec {
     }
 
     /**
-     * Creates a database connection or gets an existing connection with
-     * the JNDI name, username and password specified in the constructor.
+     * Creates a database connection or gets an existing connection with the
+     * JNDI name, username and password specified in the constructor.
      *
      * @return a {@link Connection}.
      *
@@ -107,10 +125,14 @@ public class DataSourceConnectionSpec implements ConnectionSpec {
      */
     @Override
     public Connection getOrCreate() throws SQLException {
-        if (this.user == null && this.password == null)
-            return this.dataSource.getConnection();
-        else
-            return this.dataSource.getConnection(this.user, this.password);
+        Connection con;
+        if (this.user == null && this.password == null) {
+            con = this.dataSource.getConnection();
+        } else {
+            con = this.dataSource.getConnection(this.user, this.password);
+        }
+        con.setAutoCommit(isAutoCommitEnabled());
+        return con;
     }
 
     /**

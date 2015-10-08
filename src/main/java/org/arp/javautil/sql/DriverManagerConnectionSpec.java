@@ -29,10 +29,18 @@ import java.sql.SQLException;
  * 
  * @author Andrew Post
  */
-public class DriverManagerConnectionSpec implements ConnectionSpec {
+public class DriverManagerConnectionSpec extends AbstractConnectionSpec {
     private final String url;
     private final String user;
     private final String password;
+    
+    public DriverManagerConnectionSpec(String url, String user, 
+            String password) {
+        super(true);
+        this.url = url;
+        this.user = user;
+        this.password = password;
+    }
 
     /**
      * Creates an instance with a specified JDBC URL, and a username and
@@ -43,7 +51,8 @@ public class DriverManagerConnectionSpec implements ConnectionSpec {
      * @param password a password {@link String}.
      */
     public DriverManagerConnectionSpec(String url, String user, 
-            String password) {
+            String password, boolean autoCommitEnabled) {
+        super(autoCommitEnabled);
         this.url = url;
         this.user = user;
         this.password = password;
@@ -61,7 +70,9 @@ public class DriverManagerConnectionSpec implements ConnectionSpec {
      */
     @Override
     public Connection getOrCreate() throws SQLException {
-        return DriverManager.getConnection(this.url, this.user, this.password);
+        Connection con = DriverManager.getConnection(this.url, this.user, this.password);
+        con.setAutoCommit(isAutoCommitEnabled());
+        return con;
     }
 
     /**

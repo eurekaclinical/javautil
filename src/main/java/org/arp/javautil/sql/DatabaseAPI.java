@@ -57,10 +57,12 @@ import javax.naming.NamingException;
 public enum DatabaseAPI {
 
     DRIVERMANAGER, DATASOURCE;
-
+    
     /**
      * Gets a {@link ConnectionSpec} implementation that is specific to the
      * selected database API for getting/creating a database {@link java.sql.Connection}.
+     * Connections created from the returned instance will have auto commit set 
+     * to <code>true</code>
      * 
      * @param databaseId the identifier for the database (JDBC URL for
      * the {@link java.sql.DriverManager} API, JNDI name for the
@@ -71,19 +73,40 @@ public enum DatabaseAPI {
      * @throws InvalidConnectionSpecArguments if the databaseId is invalid.
      */
     public ConnectionSpec newConnectionSpecInstance(String databaseId, 
-            String username, String password)
+            String username, String password) throws InvalidConnectionSpecArguments {
+        return newConnectionSpecInstance(databaseId, username, password, true);
+    }
+
+    /**
+     * Gets a {@link ConnectionSpec} implementation that is specific to the
+     * selected database API for getting/creating a database {@link java.sql.Connection}.
+     * 
+     * @param databaseId the identifier for the database (JDBC URL for
+     * the {@link java.sql.DriverManager} API, JNDI name for the
+     * {@link javax.sql.DataSource} API.
+     * @param username the username (<code>null</code> if not applicable)
+     * @param password the password (<code>null</code> if not applicable)
+     * @param autoCommitEnabled <code>true</code> to make connections created
+     * from the returned instance have auto commit turned on by default, 
+     * <code>false</code> to make connections created from the returned
+     * instance to have auto commit turned off by default.
+     * @return a {@link ConnectionSpec}.
+     * @throws InvalidConnectionSpecArguments if the databaseId is invalid.
+     */
+    public ConnectionSpec newConnectionSpecInstance(String databaseId, 
+            String username, String password, boolean autoCommitEnabled)
             throws InvalidConnectionSpecArguments {
         ConnectionSpec connectionSpec;
         switch (this) {
             case DRIVERMANAGER:
                 connectionSpec = 
                         new DriverManagerConnectionSpec(databaseId, username,
-                        password);
+                        password, autoCommitEnabled);
                 break;
             case DATASOURCE:
                 try {
                     connectionSpec = new DataSourceConnectionSpec(databaseId,
-                            username, password);
+                            username, password, autoCommitEnabled);
                 } catch (NamingException ex) {
                     throw new InvalidConnectionSpecArguments(ex);
                 }
