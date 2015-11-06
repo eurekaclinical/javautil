@@ -4,7 +4,7 @@
     <groupId>org.arp</groupId>
     <artifactId>javautil</artifactId>
     <packaging>jar</packaging>
-    <version>3.0-Alpha-2-SNAPSHOT</version>
+    <version>3.0-Alpha-2</version>
     <name>JavaUtil</name>
     <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
     <description>JavaUtil is a utility library to speed the development of 
@@ -27,7 +27,7 @@ statistics, database queries, caching and more.
 
     <scm>
         <developerConnection>scm:git:ssh://git.cci.emory.edu/opt/git/aiw/javautil.git</developerConnection>
-	<tag>HEAD</tag>
+	<tag>javautil-3.0-Alpha-2</tag>
     </scm>
 
     <issueManagement>
