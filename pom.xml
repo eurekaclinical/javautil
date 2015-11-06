@@ -4,7 +4,7 @@
     <groupId>org.arp</groupId>
     <artifactId>javautil</artifactId>
     <packaging>jar</packaging>
-    <version>3.0-Alpha-2-SNAPSHOT</version>
+    <version>2.4-SNAPSHOT</version>
     <name>JavaUtil</name>
     <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
     <description>JavaUtil is a utility library to speed the development of 
