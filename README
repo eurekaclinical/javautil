@@ -1,18 +1,13 @@
-JavaUtil ${project.version} -- A Utility Library for Developing Java Software
-Department of Biomedical Informatics, Emory University
+${project.name} ${project.version} -- A Utility Library for Developing Java Software
+Department of Biomedical Informatics, ${project.organization.name}
 
 OVERVIEW
 
-Welcome to JavaUtil. We developed this over multiple years during our
-internal development efforts, and it has reached a point of stability
-where we have decided to make it available to the outside world. The
-JavaUtil package aims to fill in the gaps of the Apache Commons and
-similar utility libraries out there.  Features include convenience
-classes for string, collections, arrays, dates, iterators, colors,
-logging, unit testing, a little bit of basic statistics, database
-queries, caching and more.
+${project.description}
 
 WHAT'S NEW
+
+Version 2.4 is a maintenance release. It adds several APIs.
 
 Version 2.3 is a maintenance release. Dependencies have been updated, 
 syntax updated to utilize Java 1.7 features, and some compile time 
@@ -30,18 +25,18 @@ expected to work with OpenJDK 7 as well.
 
 INSTALLATION
 
-The easiest way to get JavaUtil is using Maven. It is available from
-the http://maven.cci.emory.edu/nexus/content/repositories/aiw/ repository. 
+The easiest way to get ${project.name} is using Maven. It is available from
+the ${project.distributionManagement.repository.url} repository. 
 Use the following dependency declaration:
 
 <dependency>
-    <groupId>org.arp</groupId>
-    <artifactId>javautil</artifactId> 
+    <groupId>${project.groupId}</groupId>
+    <artifactId>${project.artifactId}</artifactId> 
     <version>${project.version}</version>
 </dependency>
 
 It is also available in tarball and zip file formats from
-http://aiw.sourceforge.net/dev/javautil-${project.version}. Put 
+${project.url}. Put 
 javautil-${project.version}.jar on your classpath.
 
 CONTACTING US
@@ -50,13 +45,13 @@ Please send an email to help@eurekaclinical.org for support or questions.
 
 LICENSING
 
-JavaUtil is freely available as open source under the Apache License,
+${project.name} is freely available as open source under the Apache License,
 Version 2.0. A copy of the license is in the LICENSE file provided in
 this distribution.
 
-JavaUtil is Copyright (C) 2012-2013 Emory University.
+${project.name} is Copyright (C) ${project.inceptionYear}-2015 Emory University.
 
 FOR MORE INFORMATION
 
-Please see http://aiw.sourceforge.net/dev/javautil-${project.version} for technical
+Please see ${project.url} for technical
 documentation and more information.

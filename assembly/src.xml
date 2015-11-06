@@ -8,6 +8,12 @@
     </formats>
     <fileSets>
         <fileSet>
+            <includes>
+                <include>README*</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
             <directory>${project.basedir}</directory>
             <excludes>
                 <exclude>**/target/**</exclude>
