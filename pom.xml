@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <version>3.0-Alpha-4-SNAPSHOT</version>
     <name>JavaUtil</name>
-    <url>http://aiw.sourceforge.net/dev/${project.build.finalName}</url>
+    <url>https://github.com/eurekaclinical/javautil.git</url>
     <description>JavaUtil is a utility library to speed the development of 
 Java software. We developed it over multiple years during 
 our internal development efforts, and it has reached a 
@@ -29,7 +29,7 @@ statistics, database queries, caching and more.
         <connection>scm:git:https://github.com/eurekaclinical/javautil.git</connection>
         <developerConnection>scm:git:https://github.com/eurekaclinical/javautil.git</developerConnection>
         <url>https://github.com/eurekaclinical/javautil.git</url>
-	<tag>HEAD</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
@@ -344,4 +344,33 @@ statistics, database queries, caching and more.
             <layout>default</layout>
         </repository>
     </repositories>
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
