@@ -18,11 +18,11 @@ classes for string, collections, arrays, dates, iterators,
 colors, logging, unit testing, a little bit of basic 
 statistics, database queries, caching and more.
     </description>
-
-    <organization>
-        <name>Emory University</name>
-        <url>http://www.emory.edu</url>
-    </organization>
+    <parent>
+        <groupId>org.eurekaclinical</groupId>
+        <artifactId>eurekaclinical-parent</artifactId>
+        <version>1-SNAPSHOT</version>
+    </parent>
     <inceptionYear>2012</inceptionYear>
 
     <scm>
@@ -44,147 +44,16 @@ statistics, database queries, caching and more.
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <distributionManagement>
-        <repository>
-            <id>aiw</id>
-            <name>AIW Repo</name>
-            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw/</url>
-        </repository>
-        <snapshotRepository>
-            <id>aiw-snapshots</id>
-            <name>AIW Snapshots Repo</name>
-            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <developers>
-        <developer>
-            <id>arpost</id>
-            <name>Andrew Post</name>
-            <email>arpost@emory.edu</email>
-            <roles>
-                <role>Faculty Project Lead</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>hrathod</id>
-            <name>Himanshu Rathod</name>
-            <email>himanshu.rathod@emory.edu</email>
-            <roles>
-                <role>Software Developer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>mmansour</id>
-            <name>Michel Mansour</name>
-            <email>michel.mansour@emory.edu</email>
-            <roles>
-                <role>Software Developer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>wtorian</id>
-            <name>Mike Torian</name>
-            <email>william.m.torian@emory.edu</email>
-            <roles>
-                <role>Data Warehouse Engineer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>mbrow2</id>
-            <name>Michael Brown</name>
-            <email>mbrow2@emory.edu</email>
-            <roles>
-                <role>Software Engineer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>sagravat</id>
-            <name>Sanjay Agravat</name>
-            <email>sagrava@emory.edu</email>
-            <roles>
-                <role>Software Developer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>gsmilto</id>
-            <name>Geoff Milton</name>
-            <email>gsmilto@emory.edu</email>
-            <roles>
-                <role>Software Developer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>ssturm2</id>
-            <name>Zanna Sturm</name>
-            <email>ssturm2@emory.edu</email>
-            <roles>
-                <role>User Interface Designer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>akalsan</id>
-            <name>Akshatha Kalsanka Pai</name>
-            <email>akalsan@emory.edu</email>
-            <roles>
-                <role>Software Developer</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-        <developer>
-            <id>richard.willard</id>
-            <name>Richie Willard</name>
-            <email>richard.willard@emoryhealthcare.org</email>
-            <roles>
-                <role>Project Manager</role>
-            </roles>
-            <organization>Department of Biomedical Informatics, Emory
-                University
-            </organization>
-        </developer>
-    </developers>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
         </dependency>
         <dependency>
             <groupId>com.sleepycat</groupId>
@@ -194,114 +63,39 @@ statistics, database queries, caching and more.
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.0.1</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.jasig.maven</groupId>
                 <artifactId>maven-notice-plugin</artifactId>
-                <version>1.0.5</version>
                 <configuration>
                     <noticeTemplate>etc/NOTICE.template</noticeTemplate>
                 </configuration>
-                <executions>
-                    <execution>	
-                        <id>checkontest</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>test</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.6</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
                 <configuration>
                     <descriptors>
                         <descriptor>assembly/src.xml</descriptor>
                         <descriptor>assembly/bin.xml</descriptor>
                     </descriptors>
-                    <tarLongFileMode>gnu</tarLongFileMode>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>1.5</version>
                 <configuration>
                     <licenseName>apache_v2</licenseName>
                     <roots>
@@ -314,15 +108,6 @@ statistics, database queries, caching and more.
                         <xsd>xml</xsd>
                     </extraExtensions>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>first</id>
-                        <goals>
-                            <goal>update-file-header</goal>
-                        </goals>
-                        <phase>process-sources</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -334,33 +119,4 @@ statistics, database queries, caching and more.
             <layout>default</layout>
         </repository>
     </repositories>
-    <profiles>
-        <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
