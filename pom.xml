@@ -328,16 +328,6 @@ statistics, database queries, caching and more.
     </build>
     <repositories>
         <repository>
-            <id>maven.cci</id>
-            <name>BMI Maven Repository</name>
-            <url>http://maven.cci.emory.edu/nexus/content/repositories/public</url>
-        </repository>
-        <repository>
-            <id>aiw</id>
-            <name>AIW Repository</name>
-            <url>http://maven.cci.emory.edu/nexus/content/repositories/aiw</url>
-        </repository>
-        <repository>
             <id>oracleReleases</id>
             <name>Oracle Released Java Packages</name>
             <url>http://download.oracle.com/maven</url>
