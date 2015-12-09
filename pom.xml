@@ -4,7 +4,7 @@
     <groupId>org.eurekaclinical</groupId>
     <artifactId>javautil</artifactId>
     <packaging>jar</packaging>
-    <version>3.0-Alpha-4</version>
+    <version>3.0-Alpha-5-SNAPSHOT</version>
     <name>JavaUtil</name>
     <url>https://github.com/eurekaclinical/javautil.git</url>
     <description>JavaUtil is a utility library to speed the development of 
@@ -29,7 +29,7 @@ statistics, database queries, caching and more.
         <connection>scm:git:https://github.com/eurekaclinical/javautil.git</connection>
         <developerConnection>scm:git:https://github.com/eurekaclinical/javautil.git</developerConnection>
         <url>https://github.com/eurekaclinical/javautil.git</url>
-        <tag>javautil-3.0-Alpha-4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
