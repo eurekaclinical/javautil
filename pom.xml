@@ -21,7 +21,7 @@ statistics, database queries, caching and more.
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent</artifactId>
-        <version>1-SNAPSHOT</version>
+        <version>1-Alpha-2</version>
     </parent>
     <inceptionYear>2012</inceptionYear>
 
