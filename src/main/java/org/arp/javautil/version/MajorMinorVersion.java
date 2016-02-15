@@ -23,7 +23,9 @@ package org.arp.javautil.version;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- *
+ * Represents the version of an application. Has the capability of comparing
+ * versions by major and minor version number.
+ * 
  * @author Andrew Post
  */
 public class MajorMinorVersion extends AbstractVersion {
@@ -31,30 +33,64 @@ public class MajorMinorVersion extends AbstractVersion {
     private final int major;
     private final int minor;
     
+    /**
+     * Creates a version with a major and a minor number and a 
+     * <code>null</code> version string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     */
     public MajorMinorVersion(int major, int minor) {
         this(major, minor, null);
     }
     
+    /**
+     * Creates a version with a major number, a minor number and a version
+     * string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     * @param versionString the version string. While the version string should
+     * represent a version with the major and minor numbers specified, that is
+     * not assumed in this implementation.
+     */
     public MajorMinorVersion(int major, int minor, String versionString) {
-        super(versionString != null ? versionString : major + "." + minor);
+        super(versionString);
         this.major = major;
         this.minor = minor;
     }
 
+    /**
+     * Returns the major version number.
+     * 
+     * @return the major version number.
+     */
     public int getMajor() {
         return major;
     }
 
+    /**
+     * Returns the minor version number.
+     * 
+     * @return the minor version number.
+     */
     public int getMinor() {
         return minor;
     }
 
-    @Override
-    public int compareTo(Version otherVersion) {
-        MajorMinorVersion o = (MajorMinorVersion) otherVersion;
-        int result = this.major - o.major;
+    /**
+     * Compares two versions by major then minor number.
+     * 
+     * @param otherVersion another {@link MajorMinorVersion}.
+     * @return <code>-1</code> if this version is lower than 
+     * <code>otherVersion</code>, <code>0</code> if they are the same version,
+     * and <code>1</code> if this version is higher than 
+     * <code>otherVersion</code>.
+     */
+    public int compare(MajorMinorVersion otherVersion) {
+        int result = this.major - otherVersion.major;
         if (result == 0) {
-            result = this.minor - o.minor;
+            result = this.minor - otherVersion.minor;
         }
         return result;
     }

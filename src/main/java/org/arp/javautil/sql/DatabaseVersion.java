@@ -25,15 +25,44 @@ import java.sql.SQLException;
 import org.arp.javautil.version.MajorMinorVersion;
 
 /**
- *
+ * Represents a database product's version.
+ * 
  * @author Andrew Post
  */
 public class DatabaseVersion extends MajorMinorVersion {
     
-    public DatabaseVersion(int majorVersion, int minorVersion, String productVersion) {
-        super(majorVersion, minorVersion, productVersion);
+    /**
+     * Creates a version with a major and a minor number and a 
+     * <code>null</code> version string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     */
+    public DatabaseVersion(int major, int minor) {
+        super(major, minor);
+    }
+    
+    /**
+     * Creates a version with a major number, a minor number and a version
+     * string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     * @param versionString the version string. While the version string should
+     * represent a version with the major and minor numbers specified, that is
+     * not assumed in this implementation.
+     */
+    public DatabaseVersion(int major, int minor, String versionString) {
+        super(major, minor, versionString);
     }
 
+    /**
+     * Extracts the database product version from database metadata.
+     * 
+     * @param metaData database metadata.
+     * @throws java.sql.SQLException if there was an error fetching metadata
+     * from the database.
+     */
     public DatabaseVersion(DatabaseMetaData metaData) throws SQLException {
         super(metaData.getDatabaseMajorVersion(), metaData.getDatabaseMinorVersion(), metaData.getDatabaseProductVersion());
     }

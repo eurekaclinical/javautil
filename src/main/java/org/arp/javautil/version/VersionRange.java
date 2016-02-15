@@ -21,31 +21,60 @@ package org.arp.javautil.version;
  */
 
 /**
- *
+ * Specifies a range of version numbers and supports checking if a specified
+ * version is within that range.
+ * 
  * @author Andrew Post
+ * @param <E> a {@link MajorMinorVersion}.
  */
-public class VersionRange<E extends Version> {
+public class VersionRange<E extends MajorMinorVersion> {
     private final E minVersion;
     private final E maxVersion;
 
+    /**
+     * Creates a version range.
+     * 
+     * @param minVersion the lower bound.
+     * @param maxVersion the upper bound.
+     */
     public VersionRange(E minVersion, E maxVersion) {
         this.minVersion = minVersion;
         this.maxVersion = maxVersion;
     }
 
+    /**
+     * Returns the lower version bound.
+     * 
+     * @return the lower version bound.
+     */
     public E getMinVersion() {
         return minVersion;
     }
 
+    /**
+     * Returns the upper version bound.
+     * 
+     * @return the upper version bound.
+     */
     public E getMaxVersion() {
         return maxVersion;
     }
     
+    /**
+     * Uses the min and max version's 
+     * {@link MajorMinorVersion#compare(org.arp.javautil.version.MajorMinorVersion) }
+     * methods to determine whether the provided version is within range.
+     * 
+     * @param version the version to check.
+     * 
+     * @return <code>true</code> if the version to check is within range, 
+     * <code>false</code> if not.
+     */
     public boolean isWithinRange(E version) {
-        if (this.minVersion != null && this.minVersion.compareTo(version) > 0) {
+        if (this.minVersion != null && this.minVersion.compare(version) > 0) {
             return false;
         }
-        if (this.maxVersion != null && this.maxVersion.compareTo(version) < 0) {
+        if (this.maxVersion != null && this.maxVersion.compare(version) < 0) {
             return false;
         }
         return true;

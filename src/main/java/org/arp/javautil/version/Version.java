@@ -24,6 +24,6 @@ package org.arp.javautil.version;
  *
  * @author Andrew Post
  */
-public interface Version extends Comparable<Version> {
+public interface Version {
     String getVersionString();
 }

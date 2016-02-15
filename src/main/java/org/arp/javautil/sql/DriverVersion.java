@@ -25,15 +25,44 @@ import java.sql.SQLException;
 import org.arp.javautil.version.MajorMinorVersion;
 
 /**
- *
+ * Represents a JDBC driver's version.
+ * 
  * @author Andrew Post
  */
 public class DriverVersion extends MajorMinorVersion {
     
-    public DriverVersion(int majorVersion, int minorVersion, String driverVersion) {
-        super(majorVersion, minorVersion, driverVersion);
+    /**
+     * Creates a version with a major and a minor number and a 
+     * <code>null</code> version string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     */
+    public DriverVersion(int major, int minor) {
+        super(major, minor);
+    }
+    
+    /**
+     * Creates a version with a major number, a minor number and a version
+     * string.
+     * 
+     * @param major the major version number.
+     * @param minor the minor version number.
+     * @param versionString the version string. While the version string should
+     * represent a version with the major and minor numbers specified, that is
+     * not assumed in this implementation.
+     */
+    public DriverVersion(int major, int minor, String versionString) {
+        super(major, minor, versionString);
     }
 
+    /**
+     * Extracts the driver version from database metadata.
+     * 
+     * @param metaData database metadata.
+     * @throws java.sql.SQLException if there was an error fetching metadata
+     * from the driver.
+     */
     public DriverVersion(DatabaseMetaData metaData) throws SQLException {
         super(metaData.getDriverMajorVersion(), metaData.getDriverMinorVersion(), metaData.getDriverVersion());
     }
