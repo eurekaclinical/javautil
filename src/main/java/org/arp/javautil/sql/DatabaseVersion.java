@@ -29,6 +29,10 @@ import org.arp.javautil.version.MajorMinorVersion;
  * @author Andrew Post
  */
 public class DatabaseVersion extends MajorMinorVersion {
+    
+    public DatabaseVersion(int majorVersion, int minorVersion, String productVersion) {
+        super(majorVersion, minorVersion, productVersion);
+    }
 
     public DatabaseVersion(DatabaseMetaData metaData) throws SQLException {
         super(metaData.getDatabaseMajorVersion(), metaData.getDatabaseMinorVersion(), metaData.getDatabaseProductVersion());

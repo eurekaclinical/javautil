@@ -22,12 +22,11 @@ package org.arp.javautil.sql;
 
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
-import org.arp.javautil.version.MajorMinorVersion;
 import org.arp.javautil.version.VersionRange;
 
 /**
- * Wraps the {@link DatabaseMetaData} class to provide some additional methods for
- * using database metadata.
+ * Wraps the {@link DatabaseMetaData} class to provide some additional methods 
+ * for using database metadata.
  * 
  * @author Andrew Post
  */
@@ -43,7 +42,7 @@ public class DatabaseMetaDataWrapper {
     /**
      * Creates the wrapper.
      * 
-     * @param metaData the {@link DatabaseMetadata} instance to wrap.
+     * @param metaData the {@link DatabaseMetaData} instance to wrap.
      */
     public DatabaseMetaDataWrapper(DatabaseMetaData metaData) {
         if (metaData == null) {
@@ -70,7 +69,7 @@ public class DatabaseMetaDataWrapper {
      * @throws SQLException if an error occurs fetching metadata containing the 
      * database product name and version from the database.
      */
-    public boolean isDatabaseCompatible(String databaseProductNameRegex, MajorMinorVersion minVersion, MajorMinorVersion maxVersion) throws SQLException {
+    public boolean isDatabaseCompatible(String databaseProductNameRegex, DatabaseVersion minVersion, DatabaseVersion maxVersion) throws SQLException {
         readMetaDataIfNeeded();
         if (!this.databaseProductName.matches(databaseProductNameRegex)) {
             return false;
@@ -93,7 +92,7 @@ public class DatabaseMetaDataWrapper {
      * @throws SQLException if an error occurs fetching metadata containing the
      * JDBC driver name and version from the database.
      */
-    public boolean isDriverCompatible(String driverName, MajorMinorVersion minVersion, MajorMinorVersion maxVersion) throws SQLException {
+    public boolean isDriverCompatible(String driverName, DriverVersion minVersion, DriverVersion maxVersion) throws SQLException {
         readMetaDataIfNeeded();
         if (!this.driverName.equals(driverName)) {
             return false;

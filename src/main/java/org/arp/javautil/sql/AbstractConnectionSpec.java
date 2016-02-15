@@ -1,5 +1,9 @@
 package org.arp.javautil.sql;
 
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+
 /*
  * #%L
  * JavaUtil
@@ -19,13 +23,17 @@ package org.arp.javautil.sql;
  * limitations under the License.
  * #L%
  */
-
 /**
  *
  * @author Andrew Post
  */
 public abstract class AbstractConnectionSpec implements ConnectionSpec {
-    private boolean autoCommitEnabled;
+
+    private final boolean autoCommitEnabled;
+    private DatabaseProduct databaseProduct;
+    private DatabaseVersion databaseVersion;
+    private Driver driverName;
+    private DriverVersion driverVersion;
     
     AbstractConnectionSpec(boolean autoCommitEnabled) {
         this.autoCommitEnabled = autoCommitEnabled;
@@ -34,6 +42,42 @@ public abstract class AbstractConnectionSpec implements ConnectionSpec {
     @Override
     public boolean isAutoCommitEnabled() {
         return this.autoCommitEnabled;
+    }
+
+    @Override
+    public DatabaseProduct getDatabaseProduct() throws SQLException {
+        readMetaDataIfNeeded();
+        return this.databaseProduct;
+    }
+
+    @Override
+    public DatabaseVersion getDatabaseVersion() throws SQLException {
+        readMetaDataIfNeeded();
+        return this.databaseVersion;
+    }
+
+    @Override
+    public Driver getDriver() throws SQLException {
+        readMetaDataIfNeeded();
+        return this.driverName;
+    }
+
+    @Override
+    public DriverVersion getDriverVersion() throws SQLException {
+        readMetaDataIfNeeded();
+        return this.driverVersion;
+    }
+
+    private void readMetaDataIfNeeded() throws SQLException {
+        if (this.databaseVersion == null) {
+            try (Connection cn = getOrCreate()) {
+                DatabaseMetaData metaData = cn.getMetaData();
+                this.databaseProduct = DatabaseProduct.fromMetaData(metaData);
+                this.databaseVersion = new DatabaseVersion(metaData);
+                this.driverName = Driver.fromMetaData(metaData);
+                this.driverVersion = new DriverVersion(metaData);
+            }
+        }
     }
 
 }

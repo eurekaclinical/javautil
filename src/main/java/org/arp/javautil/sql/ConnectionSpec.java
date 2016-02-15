@@ -38,6 +38,14 @@ public interface ConnectionSpec {
     Connection getOrCreate() throws SQLException;
     
     boolean isAutoCommitEnabled();
+    
+    DatabaseProduct getDatabaseProduct() throws SQLException;
+    
+    DatabaseVersion getDatabaseVersion() throws SQLException;
+    
+    Driver getDriver() throws SQLException;
+    
+    DriverVersion getDriverVersion() throws SQLException;
 
     /**
      * Performs some processing on this connection spec.

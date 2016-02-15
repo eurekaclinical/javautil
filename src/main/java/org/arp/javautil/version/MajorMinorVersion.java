@@ -60,6 +60,39 @@ public class MajorMinorVersion extends AbstractVersion {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + super.hashCode();
+        hash = 37 * hash + this.major;
+        hash = 37 * hash + this.minor;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MajorMinorVersion other = (MajorMinorVersion) obj;
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (this.major != other.major) {
+            return false;
+        }
+        if (this.minor != other.minor) {
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }

@@ -29,6 +29,10 @@ import org.arp.javautil.version.MajorMinorVersion;
  * @author Andrew Post
  */
 public class DriverVersion extends MajorMinorVersion {
+    
+    public DriverVersion(int majorVersion, int minorVersion, String driverVersion) {
+        super(majorVersion, minorVersion, driverVersion);
+    }
 
     public DriverVersion(DatabaseMetaData metaData) throws SQLException {
         super(metaData.getDriverMajorVersion(), metaData.getDriverMinorVersion(), metaData.getDriverVersion());
