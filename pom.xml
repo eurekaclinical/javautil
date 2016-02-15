@@ -21,7 +21,7 @@ statistics, database queries, caching and more.
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent</artifactId>
-        <version>1-Alpha-4</version>
+        <version>1-Alpha-13</version>
     </parent>
     <inceptionYear>2012</inceptionYear>
 
@@ -120,6 +120,13 @@ statistics, database queries, caching and more.
                         <!-- but should be commented in XML style -->
                         <xsd>xml</xsd>
                     </extraExtensions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
         </plugins>
