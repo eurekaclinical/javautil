@@ -23,8 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import org.apache.commons.io.FileUtils;
 
 /**
  * Creates temporary directories (i.e., that are deleted upon the exit of the
@@ -40,24 +38,24 @@ public class TempDirectoryCreator extends UniqueDirectoryCreator {
         Runtime.getRuntime().addShutdownHook(
                 new Thread("TempDirectoryShutdownHook") {
 
-                    @Override
-                    public void run() {
-                        for (File file : TEMP_DIRS) {
-                            try {
-                                FileUtils.deleteDirectory(file);
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                            }
-                        }
+            @Override
+            public void run() {
+                for (File file : TEMP_DIRS) {
+                    try {
+                        FileUtil.deleteDirectory(file);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
-                });
+                }
+            }
+        });
     }
 
     @Override
     public File create(String prefix, String suffix, File directory)
             throws IOException {
         if (directory == null) {
-            directory = FileUtils.getTempDirectory();
+            directory = FileUtil.getTempDirectory();
         }
         File f = super.create(prefix, suffix, directory);
         TEMP_DIRS.add(f);

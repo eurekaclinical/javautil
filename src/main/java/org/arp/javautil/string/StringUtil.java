@@ -19,9 +19,6 @@
  */
 package org.arp.javautil.string;
 
-import org.apache.commons.lang3.CharUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -34,15 +31,15 @@ import java.util.Map;
 public class StringUtil {
 
     private static final char QUOTE = '"';
-    private static final char[] SEARCH_CHARS = new char[]{
-        QUOTE, CharUtils.CR, CharUtils.LF};
+    private static final char[] SEARCH_CHARS
+            = new char[]{QUOTE, '\r', '\n'};
 
     private StringUtil() {
     }
 
     /**
-     * Returns whether the given string is
-     * <code>null</code>, of length 0, or contains just whitespace.
+     * Returns whether the given string is <code>null</code>, of length 0, or
+     * contains just whitespace.
      *
      * @param str a <code>String</code>.
      * @return <code>true</code> if the string is <code>null</code>, of length
@@ -175,7 +172,7 @@ public class StringUtil {
             char delimiter, Map<String, String> replace, Writer writer)
             throws IOException {
         str = doReplace(str, replace);
-        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+        if (str == null || (containsNone(str, SEARCH_CHARS)
                 && str.indexOf(delimiter) < 0)) {
             writer.write(str);
         } else {
@@ -205,7 +202,7 @@ public class StringUtil {
      */
     public static void escapeAndWriteDelimitedColumn(String str,
             char delimiter, Writer writer) throws IOException {
-        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+        if (str == null || (containsNone(str, SEARCH_CHARS)
                 && str.indexOf(delimiter) < 0)) {
             writer.write(str);
         } else {
@@ -229,7 +226,7 @@ public class StringUtil {
      * @return the escaped column {@link String}.
      */
     public static String escapeDelimitedColumn(String str, char delimiter) {
-        if (str == null || (StringUtils.containsNone(str, SEARCH_CHARS)
+        if (str == null || (containsNone(str, SEARCH_CHARS)
                 && str.indexOf(delimiter) < 0)) {
             return str;
         } else {
@@ -254,5 +251,39 @@ public class StringUtil {
         } else {
             return columnValue;
         }
+    }
+
+    private static boolean containsNone(String str, char[] searchChars) {
+        if (str == null || searchChars == null) {
+            return true;
+        }
+        int csLen = str.length();
+        int csLast = csLen - 1;
+        int searchLen = searchChars.length;
+        int searchLast = searchLen - 1;
+        for (int i = 0; i < csLen; i++) {
+            char ch = str.charAt(i);
+            for (int j = 0; j < searchLen; j++) {
+                if (searchChars[j] == ch) {
+                    if (isHighSurrogate(ch)) {
+                        if (j == searchLast) {
+                            // missing low surrogate, fine, like String.indexOf(String)
+                            return false;
+                        }
+                        if (i < csLast && searchChars[j + 1] == str.charAt(i + 1)) {
+                            return false;
+                        }
+                    } else {
+                        // ch is in the Basic Multilingual Plane
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean isHighSurrogate(char ch) {
+        return ('\uD800' <= ch && '\uDBFF' >= ch);
     }
 }

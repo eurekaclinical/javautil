@@ -8,20 +8,20 @@
     <name>JavaUtil</name>
     <url>https://github.com/eurekaclinical/javautil.git</url>
     <description>JavaUtil is a utility library to speed the development of 
-Java software. We developed it over multiple years during 
-our internal development efforts, and it has reached a 
-point of stability where we have decided to make it 
-available to the outside world. The JavaUtil package aims 
-to fill in the gaps of the Apache Commons and similar 
-utility libraries out there.  Features include convenience
-classes for string, collections, arrays, dates, iterators, 
-colors, logging, unit testing, a little bit of basic 
-statistics, database queries, caching and more.
+        Java software. We developed it over multiple years during 
+        our internal development efforts, and it has reached a 
+        point of stability where we have decided to make it 
+        available to the outside world. The JavaUtil package aims 
+        to fill in the gaps of the Apache Commons and similar 
+        utility libraries out there.  Features include convenience
+        classes for string, collections, arrays, dates, iterators, 
+        colors, logging, unit testing, a little bit of basic 
+        statistics, database queries, caching and more.
     </description>
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent</artifactId>
-        <version>1-Alpha-13</version>
+        <version>1-Alpha-14</version>
     </parent>
     <inceptionYear>2012</inceptionYear>
 
@@ -37,50 +37,24 @@ statistics, database queries, caching and more.
         <url>https://github.com/eurekaclinical/javautil/issues</url>
     </issueManagement>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.sleepycat</groupId>
-            <artifactId>je</artifactId>
-            <version>5.0.97</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>1.4.185</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mockrunner</groupId>
             <artifactId>mockrunner-jdbc</artifactId>
             <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

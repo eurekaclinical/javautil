@@ -24,8 +24,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * Creates temporary directories (i.e., that are deleted upon the exit of the
- * virtual machine). A shutdown hook deletes the directories and their contents.
+ * Creates directories with a unique name.
  *
  * @author Andrew Post
  */

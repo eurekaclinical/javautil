@@ -1,5 +1,7 @@
 package org.arp.javautil.version;
 
+import java.util.Objects;
+
 /*
  * #%L
  * JavaUtil
@@ -19,8 +21,6 @@ package org.arp.javautil.version;
  * limitations under the License.
  * #L%
  */
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents the version of an application. Has the capability of comparing
@@ -130,7 +130,7 @@ public class MajorMinorVersion extends AbstractVersion {
     
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return "Version " + this.major + "." + this.minor;
     }
 
 }

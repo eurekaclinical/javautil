@@ -19,9 +19,16 @@
  */
 package org.arp.javautil.io;
 
-import org.apache.commons.io.IOUtils;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -36,16 +43,16 @@ public final class IOUtil {
 
     private static class LazyLoggerHolder {
 
-        private static Logger instance =
-                Logger.getLogger(IOUtil.class.getPackage().getName());
+        private static final Logger INSTANCE
+                = Logger.getLogger(IOUtil.class.getPackage().getName());
     }
 
     private IOUtil() {
     }
 
     /**
-     * Reads everything from the given resource into a
-     * <code>String</code>.
+     * Reads everything from the given resource into a <code>String</code> using
+     * the default character set.
      *
      * @param classObj the <code>Class</code> from which
      * <code>Class.getResourceAsStream</code> is invoked. If <code>null</code>,
@@ -64,12 +71,20 @@ public final class IOUtil {
         if (resourceName == null) {
             return null;
         }
-        InputStream in = classObj.getResourceAsStream(resourceName);
-        return IOUtils.toString(in);
+        
+        StringBuilder textBuilder = new StringBuilder();
+        try (Reader reader = new BufferedReader(new InputStreamReader(classObj.getResourceAsStream(resourceName)))) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                textBuilder.append((char) c);
+            }
+        }
+        return textBuilder.toString();
     }
 
     /**
-     * Reads everything from a textual resource as lines.
+     * Reads everything from a textual resource as lines using the default
+     * character set.
      *
      * @param classObj the <code>Class</code> from which
      * <code>Class.getResourceAsStream</code> is invoked. If <code>null</code>,
@@ -84,7 +99,14 @@ public final class IOUtil {
     public static List<String> readResourceAsLines(
             Class<?> classObj, String resourceName) throws IOException {
         InputStream in = getResourceAsStream(resourceName, classObj);
-        return IOUtils.readLines(in);
+        try (BufferedReader buffer = new BufferedReader(new InputStreamReader(in))) {
+            List<String> lines = new ArrayList<>();
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                lines.add(line);
+            }
+            return lines;
+        }
     }
 
     /**
@@ -95,9 +117,9 @@ public final class IOUtil {
      * <code>getResourceAsStream</code> method.
      * @param classObj the {@link Class} whose <code>getResourceAsStream</code>
      * method is called, cannot be <code>null</code>.
-     * @param resourceName a resource {@link String}, visible * *
-     * from <code>classObj</code>'s class loader. If <code>null</code>, this
-     * method does nothing.
+     * @param resourceName a resource {@link String}, visible * * from
+     * <code>classObj</code>'s class loader. If <code>null</code>, this method
+     * does nothing.
      * @throws IOException if an error occurred reading the resource.
      */
     public static void readPropertiesFromResource(Properties properties,
@@ -120,16 +142,14 @@ public final class IOUtil {
     }
 
     /**
-     * Creates a
-     * <code>Properties</code> objects and loads the data in the given resource,
-     * using the given class'
-     * <code>getResourceAsStream</code> method.
+     * Creates a <code>Properties</code> objects and loads the data in the given
+     * resource, using the given class' <code>getResourceAsStream</code> method.
      *
      * @param classObj the {@link Class} whose <code>getResourceAsStream</code>
      * method is called, cannot be <code>null</code>.
-     * @param resourceName a resource {@link String}, visible * *
-     * from <code>classObj</code>'s class loader. If <code>null</code>, this
-     * methods returns an empty {@link Properties} object.
+     * @param resourceName a resource {@link String}, visible * * from
+     * <code>classObj</code>'s class loader. If <code>null</code>, this methods
+     * returns an empty {@link Properties} object.
      * @return a <code>Properties</code> object.
      * @throws IOException
      */
@@ -247,13 +267,13 @@ public final class IOUtil {
         outFile.deleteOnExit();
         return outFile;
     }
-    
+
     /**
      * Gets the logger for this package.
      *
      * @return a <code>Logger</code> object.
      */
     static Logger logger() {
-        return LazyLoggerHolder.instance;
+        return LazyLoggerHolder.INSTANCE;
     }
 }
