@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent</artifactId>
-        <version>1-Alpha-17</version>
+        <version>1</version>
     </parent>
     <inceptionYear>2012</inceptionYear>
 
