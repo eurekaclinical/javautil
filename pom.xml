@@ -75,7 +75,6 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptors>
-                        <descriptor>assembly/src.xml</descriptor>
                         <descriptor>assembly/bin.xml</descriptor>
                     </descriptors>
                 </configuration>
