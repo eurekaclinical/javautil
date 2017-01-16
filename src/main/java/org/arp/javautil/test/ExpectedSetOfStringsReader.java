@@ -27,14 +27,45 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * Reads a file of strings, one per line, into a {@link Set}. Optionally, it 
+ * allows specifying a comment character. On lines that contain the specified
+ * character, the character and the remainder of the line are ignored.
+ * 
  * @author Andrew Post
  */
-public class ExpectedSetOfStringsReader {
+public final class ExpectedSetOfStringsReader {
 
-    private static final char COMMENT_CHARACTER = '#';
-
-    public Set<String> readAsSet(String resource, Class cls) throws IOException {
+    /**
+     * Reads the file with the specifies resource name, calling 
+     * {@link Class#getResourceAsStream(java.lang.String) } to access the file.
+     * 
+     * @param resource the name of the file resource. Cannot be 
+     * <code>null</code>.
+     * @param cls the class to use. If <code>null</code>, the instance of this
+     * class will be used.
+     * @return a {@link Set} of strings, guaranteed not <code>null</code>.
+     * 
+     * @throws IOException if an error occurs reading the file.
+     */
+    public Set<String> readAsSet(String resource, Class<?> cls) throws IOException {
+        return readAsSet(resource, cls, null);
+    }
+    
+    /**
+     * Reads the file with the specifies resource name, calling 
+     * {@link Class#getResourceAsStream(java.lang.String) } to access the file.
+     * 
+     * @param resource the name of the file resource. Cannot be 
+     * <code>null</code>.
+     * @param cls the class to use. If <code>null</code>, the instance of this
+     * class will be used.
+     * @param commentCharacter the comment character to use. Set to
+     * <code>null</code> if nothing should be interpreted as a comment.
+     * @return a {@link Set} of strings, guaranteed not <code>null</code>.
+     * 
+     * @throws IOException if an error occurs reading the file.
+     */
+    public Set<String> readAsSet(String resource, Class<?> cls, Character commentCharacter) throws IOException {
         if (resource == null) {
             throw new IllegalArgumentException("resource cannot be null");
         }
@@ -49,7 +80,12 @@ public class ExpectedSetOfStringsReader {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
             while ((line = br.readLine()) != null) {
-                int indexOfCommentChar = line.indexOf(COMMENT_CHARACTER);
+                int indexOfCommentChar;
+                if (commentCharacter == null) {
+                    indexOfCommentChar = -1;
+                } else {
+                    indexOfCommentChar = line.indexOf(commentCharacter);
+                }
                 String lineMinusComment;
                 if (indexOfCommentChar > -1) {
                     lineMinusComment = line.substring(0, indexOfCommentChar);

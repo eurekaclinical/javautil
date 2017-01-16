@@ -33,7 +33,7 @@ import org.junit.Test;
 public class ExpectedSetOfStringsReaderTest {
 
     @Test
-    public void doTest() throws IOException {
+    public void doTestComment() throws IOException {
         Set<String> expected = Arrays.asSet(new String[]{
             "foo",
             "bar",
@@ -42,7 +42,37 @@ public class ExpectedSetOfStringsReaderTest {
             "rab",
             "zab"
         });
+        Set<String> actual = new ExpectedSetOfStringsReader().readAsSet("/truth/testExpectedSetOfStringsReaderTest", getClass(), '#');
+        assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void doTestNoComment() throws IOException {
+        Set<String> expected = Arrays.asSet(new String[]{
+            "foo #foobarbaz",
+            "bar",
+            "baz",
+            "oof",
+            "rab#world",
+            "zab",
+            "#hello"
+        });
         Set<String> actual = new ExpectedSetOfStringsReader().readAsSet("/truth/testExpectedSetOfStringsReaderTest", getClass());
+        assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void doTestNullComment() throws IOException {
+        Set<String> expected = Arrays.asSet(new String[]{
+            "foo #foobarbaz",
+            "bar",
+            "baz",
+            "oof",
+            "rab#world",
+            "zab",
+            "#hello"
+        });
+        Set<String> actual = new ExpectedSetOfStringsReader().readAsSet("/truth/testExpectedSetOfStringsReaderTest", getClass(), null);
         assertEquals(expected, actual);
     }
 }
