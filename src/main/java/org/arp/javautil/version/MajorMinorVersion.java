@@ -130,7 +130,7 @@ public class MajorMinorVersion extends AbstractVersion {
     
     @Override
     public String toString() {
-        return "Version " + this.major + "." + this.minor;
+        return "Version " + this.major + "." + this.minor + " (" + this.getVersionString() + ")";
     }
 
 }

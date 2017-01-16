@@ -51,7 +51,7 @@ public class H2DatabaseMetaDataTest extends AbstractDatabaseMetaDataTest {
     @Test
     public void testDatabaseVersion() throws SQLException {
         assertDatabaseVersion(
-                new DatabaseVersion(1, 4, "1.4.185 (2015-01-16)"));
+                new DatabaseVersion(1, 4, "1.4.193 (2016-10-31)"));
     }
     
     @Test
@@ -61,6 +61,6 @@ public class H2DatabaseMetaDataTest extends AbstractDatabaseMetaDataTest {
     
     @Test
     public void testDriverVersion() throws SQLException {
-        assertDriverVersion(new DriverVersion(1, 4, "1.4.185 (2015-01-16)"));
+        assertDriverVersion(new DriverVersion(1, 4, "1.4.193 (2016-10-31)"));
     }
 }
