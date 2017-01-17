@@ -21,6 +21,7 @@ package org.arp.javautil.collections;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,8 @@ import java.util.Set;
  * @author Andrew Post
  */
 public class Collections {
+    
+    private static final HashMapFactory HASH_MAP_FACTORY = new HashMapFactory();
 
     private Collections() {
     }
@@ -161,4 +164,9 @@ public class Collections {
         }
         return result;
     }
+    
+    public static <K, V> HashMap<K, V> newHashMap(int expectedCapacity) {
+        return HASH_MAP_FACTORY.getInstance(expectedCapacity);
+    }
+    
 }
