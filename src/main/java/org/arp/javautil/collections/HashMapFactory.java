@@ -37,7 +37,7 @@ public class HashMapFactory {
         }
         if (expectedSize < 3) {
             return expectedSize + 1;
-        } else if (expectedSize < 1 << (Integer.SIZE - 2)) {
+        } else if (expectedSize < 1 << (Integer.SIZE - 2)) { //largest power of two
             return expectedSize + expectedSize / 3;
         } else {
             return Integer.MAX_VALUE;
