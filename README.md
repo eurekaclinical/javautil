@@ -7,6 +7,9 @@ It is a utility library to accelerate the development of Java software. It is us
 ## Version 4.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil)
 
+Additional functionality:
+* Added a factory to the collections package for creating hashmaps with an expected capacity (number of key-value pairs).
+
 ## Version history
 ### Version 3.0
 * Changed the pom to depend on Eureka! Clinical's parent pom, and changed the group id to `org.eurekaclinical`.
