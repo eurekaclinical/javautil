@@ -15,6 +15,7 @@ limitations under the License.
 This project includes:
   ant under The Apache Software License, Version 2.0
   bcel under Apache License, Version 2.0
+  Commons Logging under The Apache Software License, Version 2.0
   H2 Database Engine under MPL 2.0 or EPL 1.0
   Hamcrest Core under New BSD License
   jakarta-regexp under Apache License, Version 2.0
@@ -22,7 +23,6 @@ This project includes:
   JavaUtil under Apache License, Version 2.0
   jdom under Apache style license
   JUnit under Eclipse Public License 1.0
-  Logging under The Apache Software License, Version 2.0
   MockRunner-Core under Mockrunner License, based on Apache Software License, version 1.1
   MockRunner-JDBC under Mockrunner License, based on Apache Software License, version 1.1
   Neko HTML under Apache License, Version 2.0
