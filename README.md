@@ -1,5 +1,5 @@
 # Javautil
-[Atlanta Clinical and Translational Science Institute (ACTSI)](http://www.actsi.org), [Emory University](http://www.emory.edu), Atlanta, GA
+[Georgia Clinical and Translational Science Alliance (Georgia CTSA)](http://www.georgiactsa.org), [Emory University](http://www.emory.edu), Atlanta, GA
 
 ## What does it do?
 It is a utility library to accelerate the development of Java software. It is used throughout Eureka! Clinical projects, but it is designed to be useful to other projects as well. While we use the Apache Commons libraries when possible, when we find a gap in those libraries, we fill the gap by adding to this project.
