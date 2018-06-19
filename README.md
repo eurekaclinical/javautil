@@ -22,24 +22,23 @@ Packages and functionality:
 * `test`: supports externalizing a list of strings for comparing collections during unit testing.
 * `version`: classes for managing semantic versioning and comparing version numbers.
 
-## Version history
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil)
 
-### Version 4.0
+## Version 4.0
 * Added a factory to the collections package for creating hashmaps with an expected capacity (number of key-value pairs).
 * Removed support in the pom.xml for generating a tarball/zipfile. 
 * Updated h2 dependency.
 * Depend on the eurekaclinical-parent-standard-deps parent pom.
 
-### Version 3.0
+## Version 3.0
 * Changed the pom to depend on Eureka! Clinical's parent pom, and changed the group id to `org.eurekaclinical`.
 * Added API to get and work with database product names and versions, and JDBC driver versions.
 * Moved the datastore package to its own project.
 
-### Version 2.3
+## Version 2.3
 More functionality.
 
-### Version 1.1
+## Version 1.1
 Initial release, with some additional functionality and performance improvement.
 
 ## Build requirements
