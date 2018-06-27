@@ -165,27 +165,15 @@ public class StringUtil {
      *
      * @param str a column {@link String}.
      * @param delimiter the file's delimiter character.
+     * @param replace replaces any keys that are found with the corresponding 
+     * values.
      * @param writer the {@link Writer} to which to write the escaped column.
      * @throws IOException if an error writing to <code>writer</code> occurs.
      */
     public static void escapeAndWriteDelimitedColumn(String str,
             char delimiter, Map<String, String> replace, Writer writer)
             throws IOException {
-        str = doReplace(str, replace);
-        if (str == null || (containsNone(str, SEARCH_CHARS)
-                && str.indexOf(delimiter) < 0)) {
-            writer.write(str);
-        } else {
-            writer.write(QUOTE);
-            for (int j = 0, n = str.length(); j < n; j++) {
-                char c = str.charAt(j);
-                if (c == QUOTE) {
-                    writer.write(QUOTE);
-                }
-                writer.write(c);
-            }
-            writer.write(QUOTE);
-        }
+        escapeAndWriteDelimitedColumn(doReplace(str, replace), delimiter, writer);
     }
 
     /**
@@ -195,15 +183,21 @@ public class StringUtil {
      * less temporary object creation. The performance difference will become
      * more apparent when writing large delimited files.
      *
-     * @param str a column {@link String}.
+     * @param str a column {@link String}. If <code>null</code>, the string
+     * <code>NULL</code> will be written out. If you want to write out 
+     * something different when a <code>null</code> is encountered, use
+     * {@link #escapeAndWriteDelimitedColumn(java.lang.String, char, java.util.Map, java.io.Writer) }
+     * and specify a replacement.
      * @param delimiter the file's delimiter character.
      * @param writer the {@link Writer} to which to write the escaped column.
      * @throws IOException if an error writing to <code>writer</code> occurs.
      */
     public static void escapeAndWriteDelimitedColumn(String str,
             char delimiter, Writer writer) throws IOException {
-        if (str == null || (containsNone(str, SEARCH_CHARS)
-                && str.indexOf(delimiter) < 0)) {
+        if (str == null) {
+            escapeAndWriteDelimitedColumn("NULL", delimiter, writer);
+        } else if (containsNone(str, SEARCH_CHARS) 
+                && str.indexOf(delimiter) < 0) {
             writer.write(str);
         } else {
             writer.write(QUOTE);

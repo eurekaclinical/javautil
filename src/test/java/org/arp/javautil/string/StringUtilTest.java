@@ -19,10 +19,15 @@
  */
 package org.arp.javautil.string;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Andrew Post
@@ -42,6 +47,28 @@ public class StringUtilTest {
     @Test
     public void testNull() {
         assertTrue(StringUtil.getEmptyOrNull(null));
+    }
+    
+    @Test
+    public void testEscapeAndWriteDelimitedColumnNull() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw;
+            StringUtil.escapeAndWriteDelimitedColumn(null, '\t', sw);
+        }
+        assertEquals("NULL", thesw.toString());
+    }
+    
+    @Test
+    public void testEscapeAndWriteDelimitedColumnReplaceNull() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw; //Will be able to go away in JDK > 8.
+            Map<String, String> replace = new HashMap<>();
+            replace.put(null, "foo");
+            StringUtil.escapeAndWriteDelimitedColumn(null, '\t', replace, sw);
+        }
+        assertEquals("foo", thesw.toString());
     }
 
 }
