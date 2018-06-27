@@ -24,6 +24,9 @@ Packages and functionality:
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil)
 
+## Version 4.0.1
+* Avoid NullPointerExceptions when writing null values to a delimited file.
+
 ## Version 4.0
 * Added a factory to the collections package for creating hashmaps with an expected capacity (number of key-value pairs).
 * Removed support in the pom.xml for generating a tarball/zipfile. 
