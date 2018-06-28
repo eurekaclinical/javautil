@@ -58,6 +58,36 @@ public class StringUtilTest {
         }
         assertEquals("NULL", thesw.toString());
     }
+    //added for OMOP mapping
+    @Test
+    public void testEscapeAndWriteDelimitedColumnWithString() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw;
+            StringUtil.escapeAndWriteDelimitedColumn("MyStr", '\t',true, sw);
+        }
+        assertEquals("\"MyStr\"", thesw.toString());
+    }
+    //added for OMOP mapping
+    @Test
+    public void testEscapeAndWriteDelimitedColumnWithQuotedString() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw;
+            StringUtil.escapeAndWriteDelimitedColumn("My\"Str", '\t',true, sw);
+        }
+        assertEquals("\"My\"\"Str\"", thesw.toString());
+    }
+    //added for OMOP mapping
+    @Test
+    public void testEscapeAndWriteDelimitedColumnWithQuotedNull() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw;
+            StringUtil.escapeAndWriteDelimitedColumn(null, '\t',true, sw);
+        }
+        assertEquals("\"\"", thesw.toString());        
+    }
     
     @Test
     public void testEscapeAndWriteDelimitedColumnReplaceNull() throws IOException {
