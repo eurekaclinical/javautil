@@ -103,5 +103,17 @@ public class StringUtilTest {
         }
         assertEquals("foo", thesw.toString());
     }
+    
+    @Test
+    public void testEscapeAndWriteQuotedDelimitedColumnReplaceNull() throws IOException {
+        StringWriter thesw;
+        try (StringWriter sw = new StringWriter()) {
+            thesw = sw; //Will be able to go away in JDK > 8.
+            Map<String, String> replace = new HashMap<>();
+            replace.put(null, "foo");
+            StringUtil.escapeAndWriteDelimitedColumn(null, '\t', true, replace, sw);
+        }
+        assertEquals("\"foo\"", thesw.toString());
+    }
 
 }

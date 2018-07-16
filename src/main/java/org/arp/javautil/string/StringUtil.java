@@ -238,6 +238,14 @@ public class StringUtil {
         }
     }
 
+    public static void escapeAndWriteDelimitedColumn(String str,
+            char delimiter, boolean addQuotes, Map<String, String> replace,
+            Writer writer)
+            throws IOException {
+        escapeAndWriteDelimitedColumn(doReplace(str, replace), delimiter, 
+                addQuotes, writer);
+    }
+
     /**
      * Escapes a column in a delimited file.
      *
