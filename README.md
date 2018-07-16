@@ -24,6 +24,10 @@ Packages and functionality:
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/javautil)
 
+## Version 4.2
+* Add a version of escapeAndWriteDelimitedColumn that allows forcing quotes and
+supports replacement.
+
 ## Version 4.1
 * Add a version of escapeAndWriteDelimitedColumn that allows forcing all
 columns to be surrounded by double quotes.
