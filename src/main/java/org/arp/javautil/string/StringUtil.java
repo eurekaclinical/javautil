@@ -164,8 +164,8 @@ public class StringUtil {
      *
      * @param str a column {@link String}.
      * @param delimiter the file's delimiter character.
-     * @param replace replaces any keys that are found with the corresponding
-     * values.
+     * @param replace a map. Replaces any keys that are found with the 
+     * corresponding values.
      * @param writer the {@link Writer} to which to write the escaped column.
      * @throws IOException if an error writing to <code>writer</code> occurs.
      */
@@ -238,6 +238,26 @@ public class StringUtil {
         }
     }
 
+    /**
+     * Escapes a column in a delimited file and writes a quoted string directly
+     * to a {@link Writer}. This is somewhat more efficient than
+     * {@link #escapeDelimitedColumn(java.lang.String, char)} because it does
+     * less temporary object creation. The performance difference will become
+     * more apparent when writing large delimited files.
+     *
+     * @param str a column {@link String}. If <code>null</code>, the string
+     * <code>NULL</code> will be written out. If a quote is part of the string,
+     * it will be escaped by a second quote (my"Str will be written out as
+     * "my""Str"). If not, the string will be surrounded with quotes and written
+     * out (myStr will be written out as "myStr").
+     * @param delimiter the file's delimiter character.
+     * @param addQuotes whether or not to surround the surround the column by
+     * quotes.
+     * @param replace a map. Replaces any keys that are found with the 
+     * corresponding values.
+     * @param writer the {@link Writer} to which to write the escaped column.
+     * @throws IOException if an error writing to <code>writer</code> occurs.
+     */
     public static void escapeAndWriteDelimitedColumn(String str,
             char delimiter, boolean addQuotes, Map<String, String> replace,
             Writer writer)
