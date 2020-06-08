@@ -30,6 +30,7 @@ import java.util.List;
  *
  * @author Andrew Post
  */
+@Deprecated
 public class TempDirectoryCreator extends UniqueDirectoryCreator {
 
     private final static List<File> TEMP_DIRS = new ArrayList<>();
