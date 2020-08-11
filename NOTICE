@@ -14,7 +14,9 @@ limitations under the License.
 
 This project includes:
   ant under The Apache Software License, Version 2.0
+  Apache Commons DBCP under Apache License, Version 2.0
   Apache Commons Logging under The Apache Software License, Version 2.0
+  Apache Commons Pool under Apache License, Version 2.0
   bcel under Apache License, Version 2.0
   H2 Database Engine under MPL 2.0 or EPL 1.0
   Hamcrest Core under New BSD License

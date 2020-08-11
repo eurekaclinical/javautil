@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
-        <version>4-Alpha-4-SNAPSHOT</version>
+        <version>4-Alpha-4</version>
     </parent>
     <properties>
     	<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -57,6 +57,11 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-dbcp2</artifactId>
+    		<version>2.7.0</version>
+		</dependency>
     </dependencies>
 
     <build>
