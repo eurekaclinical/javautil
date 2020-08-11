@@ -23,9 +23,9 @@
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
         <version>4-Alpha-4</version>
     </parent>
-    <properties>
+    <!-- properties>
     	<maven.javadoc.skip>true</maven.javadoc.skip>
-    </properties>
+    </properties-->
     <inceptionYear>2012</inceptionYear>
 
     <scm>
